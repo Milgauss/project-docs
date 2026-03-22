@@ -1,0 +1,22 @@
+---
+description: v1 D-… + TODO Refs; Vx-… locked + open backlog (v2+); interface before code.
+alwaysApply: true
+---
+
+# Before implementing
+
+1. Open **`TODO.md`** for the target §. If it lists **`Refs: D-…`**, read those rows in **`DECISIONS.md`** (v1 **locked** register). **`PLANNED_INTERFACE.md`** / **README** must match.
+
+2. If the § has no **`Refs: D-…`** yet or points only at open **`BACKLOG.md`** sections: work from backlog + interface — **do not invent behavior** until **`PLANNED_INTERFACE.md`** is updated. After locking, add **`D-…`** to **`DECISIONS.md`** and **`Refs:`** on the TODO §.
+
+3. **Future versions (v2+):** Locked outcomes **before** **`PLANNED_INTERFACE.md`** merge → **`Vx-…`** rows in **`BACKLOG.md`** (**`V2-…`**, **`V3-…`**, …). Open ideas stay in the rest of that file. Promote to the interface before implementing.
+
+4. Trivial edits (typo, test-only) skip the above.
+
+Optional: short **“Decisions to confirm”** if the human has not chosen and the interface is silent.
+
+## References
+
+- **`DECISIONS.md`** §2–§3 — shipped vs pending **`D-…`**; **§4** — open v1 forks
+- **`BACKLOG.md`** — **`Vx-…`** register + open ideas / todos for **v2 and later**
+- **`PLANNED_INTERFACE.md`** — contract
