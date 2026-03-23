@@ -40,6 +40,7 @@ Read in order; contract wins on conflict.
 | [`BACKLOG.md`](BACKLOG.md) | `Vx-…`, v2+ (not contract) |
 | [`config.example.yaml`](config.example.yaml) | Example YAML; rules in contract §3–§4, §8 |
 | [`implementation-notes.md`](implementation-notes.md) | Retros; not normative |
+| [`SYSTEM_CONTEXT.md`](SYSTEM_CONTEXT.md) | Optional: this repo inside a larger system; not SoT — [`PLANNED_INTERFACE.md`](PLANNED_INTERFACE.md) §0 wins |
 | [`COLLABORATION_AND_AI_RULES.md`](COLLABORATION_AND_AI_RULES.md) | Process, §6 lessons, drift checklist |
 | [`CHANGELOG.md`](CHANGELOG.md) | Release history; semver and contract alignment |
 | [`schemas/public_pydantic_schemas.json`](schemas/public_pydantic_schemas.json) | CI snapshot of public models; regen script below |
