@@ -1,21 +1,8 @@
 # Tech stack
 
-When starting new work or choosing libraries, **prefer entries marked with ✅** in the first column of the tables in **`FRAMEWORKS.md`** (repo root). Use the **section** that matches the layer of the problem (frontend, HTTP server, parsing, testing, etc.—see that file’s intro for how sections are ordered and how to pick a row).
+When starting new work or choosing libraries, **prefer entries marked with ✅** in the first column of the tables in **`FRAMEWORKS.md`** (repo root). Use the **section** that matches the layer of the problem (frontend, HTTP server, parsing, testing, etc.—see that file’s intro for how sections are ordered and how to pick a row). **`FRAMEWORKS.md`** is a starting point only; **this repo’s** locked Python stack is **`IMPLEMENTATION_PLAN.md`** §2. Disagree or suggest alternatives if better options exist.
 
 If nothing fits or **`FRAMEWORKS.md`** is absent, choose explicitly with the user or follow task-specific instructions.
-
-**✅ defaults in the current catalog** (update this list when you add or remove ✅ in **`FRAMEWORKS.md`**):
-
-- **Frontend styling:** Tailwind CSS
-- **Web data / proxies:** Bright Data
-- **Testing (Python):** pytest
-- **CLI (Python):** Typer
-- **Data validation / settings (Python):** Pydantic
-- **HTTP client (Python):** httpx
-- **HTML → Markdown (Python):** Markdownify
-- **HTML/XML parsing (Python):** Beautiful Soup 4
-- **YAML (Python):** PyYAML
-- **Environment / `.env` (Python):** python-dotenv
 
 # General guidelines
 

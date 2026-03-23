@@ -1,0 +1,44 @@
+{
+  "range": {
+    "start": "2025-06-01",
+    "end": "2025-06-04"
+  },
+  "record_count": 5,
+  "records": [
+    {
+      "provider": "anthropic",
+      "service": "claude-haiku-fixture:tokens:uncached_input_tokens",
+      "date": "2025-06-01",
+      "amount": "0.01",
+      "currency": "USD"
+    },
+    {
+      "provider": "anthropic",
+      "service": "claude-haiku-fixture:tokens:output_tokens",
+      "date": "2025-06-01",
+      "amount": "0.02",
+      "currency": "USD"
+    },
+    {
+      "provider": "anthropic",
+      "service": "claude-haiku-fixture:tokens:cache_read_input_tokens",
+      "date": "2025-06-01",
+      "amount": "0.03",
+      "currency": "USD"
+    },
+    {
+      "provider": "anthropic",
+      "service": "claude-opus-fixture:tokens:output_tokens",
+      "date": "2025-06-02",
+      "amount": "1.25",
+      "currency": "USD"
+    },
+    {
+      "provider": "anthropic",
+      "service": "claude-opus-fixture:tokens:cache_creation.ephemeral_5m_input_tokens",
+      "date": "2025-06-02",
+      "amount": "0.50",
+      "currency": "USD"
+    }
+  ]
+}

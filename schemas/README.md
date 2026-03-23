@@ -1,9 +1,16 @@
-# Schemas (optional)
+# Schemas
 
-If **`PLANNED_INTERFACE.md`** defines JSON (or similar) output:
+## `public_pydantic_schemas.json`
 
-1. Add a **JSON Schema** file here (e.g. `result.json`) for integrators and agents.
-2. Document regeneration in **`PLANNED_INTERFACE.md`** or **`README.md`** (e.g. a small script under `scripts/` that exports from your models).
-3. Add a **test** that fails if the committed file drifts from the live export.
+Machine-readable **JSON Schema** for each public **`BaseModel`** re-exported from **`api_spend`** (derived from `api_spend.__all__` via `model_json_schema()`).
 
-No schema is required for the methodology to work—only when machine validation adds value.
+- **Semantics** (field meaning, coverage rules, env names): [`PLANNED_INTERFACE.md`](../PLANNED_INTERFACE.md) §5–§6 and §8 (**§0** SoT).
+- **Regenerate** after changing those models:
+
+  ```bash
+  cd /path/to/api-spend
+  python scripts/export_public_schema.py
+  pytest -q tests/test_public_schema_snapshot.py
+  ```
+
+- **CI:** [`tests/test_public_schema_snapshot.py`](../tests/test_public_schema_snapshot.py) diffs this file to a fresh export.

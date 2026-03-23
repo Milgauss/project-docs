@@ -1,5 +1,9 @@
 # Frameworks and tools
 
+**API Spend:** Locked stack is [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md) section 2 (`pyproject.toml`). This file is a broad catalog for adjacent or future work, not the project’s source of truth.
+
+---
+
 Sections are ordered from **highest-level** (whole user-facing stacks, platforms, and orchestration) down to **lowest-level** (small libraries and single-purpose utilities). **When adding a new tool**, insert it into the first section whose scope fits (roughly: end-user app → web/API framework → **database access** → data/ML stack → cross-cutting ops → project tooling → parsing/IO glue). If unsure, place it **below** things that *use* it and **above** things it *depends on*. Within a table, put broader or “default” choices first when it helps scanning.
 
 The first column in each table is narrow—put ✅ when a tool is a default choice (leave blank otherwise). **Within each table, rows with ✅ appear first.** Other columns: name, short description, homepage, and documentation.
@@ -235,6 +239,6 @@ The first column in each table is narrow—put ✅ when a tool is a default choi
 
 |     | Name          | Description                                                                           | Homepage                                                                         | Documentation                                                             |
 | :-: | ------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| ✅   | python-dotenv | Reads key-value pairs from a `.env` file into the process environment (`os.environ`). | [github.com/theskumar/python-dotenv](https://github.com/theskumar/python-dotenv) | [python-dotenv README](https://github.com/theskumar/python-dotenv#readme) |
+|     | python-dotenv | Reads key-value pairs from a `.env` file into the process environment (`os.environ`). | [github.com/theskumar/python-dotenv](https://github.com/theskumar/python-dotenv) | [python-dotenv README](https://github.com/theskumar/python-dotenv#readme) |
 
 

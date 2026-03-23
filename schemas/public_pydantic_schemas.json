@@ -1,0 +1,755 @@
+{
+  "AppConfig": {
+    "$defs": {
+      "ProviderConfig": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "options": {
+            "additionalProperties": true,
+            "title": "Options",
+            "type": "object"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "title": "ProviderConfig",
+        "type": "object"
+      },
+      "SyncConfig": {
+        "properties": {
+          "lookback_days": {
+            "default": 60,
+            "minimum": 1,
+            "title": "Lookback Days",
+            "type": "integer"
+          }
+        },
+        "title": "SyncConfig",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "providers": {
+        "items": {
+          "$ref": "#/$defs/ProviderConfig"
+        },
+        "title": "Providers",
+        "type": "array"
+      },
+      "sync": {
+        "$ref": "#/$defs/SyncConfig"
+      }
+    },
+    "title": "AppConfig",
+    "type": "object"
+  },
+  "GapInfo": {
+    "properties": {
+      "end": {
+        "format": "date",
+        "title": "End",
+        "type": "string"
+      },
+      "provider": {
+        "title": "Provider",
+        "type": "string"
+      },
+      "reason": {
+        "title": "Reason",
+        "type": "string"
+      },
+      "start": {
+        "format": "date",
+        "title": "Start",
+        "type": "string"
+      }
+    },
+    "required": [
+      "provider",
+      "start",
+      "end",
+      "reason"
+    ],
+    "title": "GapInfo",
+    "type": "object"
+  },
+  "ProviderCapabilities": {
+    "properties": {
+      "native_granularity": {
+        "title": "Native Granularity",
+        "type": "string"
+      },
+      "supports_date_range": {
+        "title": "Supports Date Range",
+        "type": "boolean"
+      },
+      "supports_service_breakdown": {
+        "title": "Supports Service Breakdown",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "supports_date_range",
+      "native_granularity",
+      "supports_service_breakdown"
+    ],
+    "title": "ProviderCapabilities",
+    "type": "object"
+  },
+  "ProviderConfig": {
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string"
+      },
+      "options": {
+        "additionalProperties": true,
+        "title": "Options",
+        "type": "object"
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "title": "ProviderConfig",
+    "type": "object"
+  },
+  "ProviderInfo": {
+    "$defs": {
+      "ProviderCapabilities": {
+        "properties": {
+          "native_granularity": {
+            "title": "Native Granularity",
+            "type": "string"
+          },
+          "supports_date_range": {
+            "title": "Supports Date Range",
+            "type": "boolean"
+          },
+          "supports_service_breakdown": {
+            "title": "Supports Service Breakdown",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "supports_date_range",
+          "native_granularity",
+          "supports_service_breakdown"
+        ],
+        "title": "ProviderCapabilities",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "capabilities": {
+        "$ref": "#/$defs/ProviderCapabilities"
+      },
+      "configured": {
+        "title": "Configured",
+        "type": "boolean"
+      },
+      "earliest_data": {
+        "anyOf": [
+          {
+            "format": "date",
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Earliest Data"
+      },
+      "last_synced": {
+        "anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Last Synced"
+      },
+      "latest_data": {
+        "anyOf": [
+          {
+            "format": "date",
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Latest Data"
+      },
+      "name": {
+        "title": "Name",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "configured",
+      "last_synced",
+      "earliest_data",
+      "latest_data",
+      "capabilities"
+    ],
+    "title": "ProviderInfo",
+    "type": "object"
+  },
+  "ProviderSyncStatus": {
+    "properties": {
+      "counter_observed": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Counter Observed"
+      },
+      "error": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Error"
+      },
+      "latest_date": {
+        "anyOf": [
+          {
+            "format": "date",
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Latest Date"
+      },
+      "ok": {
+        "title": "Ok",
+        "type": "boolean"
+      },
+      "provider": {
+        "title": "Provider",
+        "type": "string"
+      },
+      "records_added": {
+        "title": "Records Added",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "provider",
+      "ok",
+      "records_added",
+      "latest_date",
+      "error"
+    ],
+    "title": "ProviderSyncStatus",
+    "type": "object"
+  },
+  "ProviderValidation": {
+    "properties": {
+      "config_ok": {
+        "title": "Config Ok",
+        "type": "boolean"
+      },
+      "credentials_ok": {
+        "title": "Credentials Ok",
+        "type": "boolean"
+      },
+      "error": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Error"
+      },
+      "provider": {
+        "title": "Provider",
+        "type": "string"
+      },
+      "reachable": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Reachable"
+      }
+    },
+    "required": [
+      "provider",
+      "config_ok",
+      "credentials_ok",
+      "reachable",
+      "error"
+    ],
+    "title": "ProviderValidation",
+    "type": "object"
+  },
+  "QueryResult": {
+    "$defs": {
+      "GapInfo": {
+        "properties": {
+          "end": {
+            "format": "date",
+            "title": "End",
+            "type": "string"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "start": {
+            "format": "date",
+            "title": "Start",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "start",
+          "end",
+          "reason"
+        ],
+        "title": "GapInfo",
+        "type": "object"
+      },
+      "SpendBucket": {
+        "properties": {
+          "amount": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                "type": "string"
+              }
+            ],
+            "title": "Amount"
+          },
+          "coverage": {
+            "enum": [
+              "complete",
+              "partial",
+              "estimated"
+            ],
+            "title": "Coverage",
+            "type": "string"
+          },
+          "currency": {
+            "title": "Currency",
+            "type": "string"
+          },
+          "group": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Group"
+          },
+          "period_end": {
+            "format": "date",
+            "title": "Period End",
+            "type": "string"
+          },
+          "period_start": {
+            "format": "date",
+            "title": "Period Start",
+            "type": "string"
+          }
+        },
+        "required": [
+          "period_start",
+          "period_end",
+          "group",
+          "amount",
+          "currency",
+          "coverage"
+        ],
+        "title": "SpendBucket",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "buckets": {
+        "items": {
+          "$ref": "#/$defs/SpendBucket"
+        },
+        "title": "Buckets",
+        "type": "array"
+      },
+      "gaps": {
+        "items": {
+          "$ref": "#/$defs/GapInfo"
+        },
+        "title": "Gaps",
+        "type": "array"
+      },
+      "providers_included": {
+        "items": {
+          "type": "string"
+        },
+        "title": "Providers Included",
+        "type": "array"
+      }
+    },
+    "required": [
+      "buckets",
+      "providers_included",
+      "gaps"
+    ],
+    "title": "QueryResult",
+    "type": "object"
+  },
+  "SpendBucket": {
+    "properties": {
+      "amount": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+            "type": "string"
+          }
+        ],
+        "title": "Amount"
+      },
+      "coverage": {
+        "enum": [
+          "complete",
+          "partial",
+          "estimated"
+        ],
+        "title": "Coverage",
+        "type": "string"
+      },
+      "currency": {
+        "title": "Currency",
+        "type": "string"
+      },
+      "group": {
+        "anyOf": [
+          {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Group"
+      },
+      "period_end": {
+        "format": "date",
+        "title": "Period End",
+        "type": "string"
+      },
+      "period_start": {
+        "format": "date",
+        "title": "Period Start",
+        "type": "string"
+      }
+    },
+    "required": [
+      "period_start",
+      "period_end",
+      "group",
+      "amount",
+      "currency",
+      "coverage"
+    ],
+    "title": "SpendBucket",
+    "type": "object"
+  },
+  "SpendRecord": {
+    "properties": {
+      "amount": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+            "type": "string"
+          }
+        ],
+        "title": "Amount"
+      },
+      "currency": {
+        "title": "Currency",
+        "type": "string"
+      },
+      "date": {
+        "format": "date",
+        "title": "Date",
+        "type": "string"
+      },
+      "provider": {
+        "title": "Provider",
+        "type": "string"
+      },
+      "service": {
+        "title": "Service",
+        "type": "string"
+      }
+    },
+    "required": [
+      "provider",
+      "service",
+      "date",
+      "amount",
+      "currency"
+    ],
+    "title": "SpendRecord",
+    "type": "object"
+  },
+  "Status": {
+    "properties": {
+      "configured_providers": {
+        "title": "Configured Providers",
+        "type": "integer"
+      },
+      "last_sync": {
+        "anyOf": [
+          {
+            "format": "date-time",
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Last Sync"
+      },
+      "store_size_bytes": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Store Size Bytes"
+      },
+      "synced_providers": {
+        "title": "Synced Providers",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "configured_providers",
+      "synced_providers",
+      "last_sync",
+      "store_size_bytes"
+    ],
+    "title": "Status",
+    "type": "object"
+  },
+  "SyncConfig": {
+    "properties": {
+      "lookback_days": {
+        "default": 60,
+        "minimum": 1,
+        "title": "Lookback Days",
+        "type": "integer"
+      }
+    },
+    "title": "SyncConfig",
+    "type": "object"
+  },
+  "SyncResult": {
+    "$defs": {
+      "ProviderSyncStatus": {
+        "properties": {
+          "counter_observed": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Counter Observed"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "latest_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latest Date"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "records_added": {
+            "title": "Records Added",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "provider",
+          "ok",
+          "records_added",
+          "latest_date",
+          "error"
+        ],
+        "title": "ProviderSyncStatus",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "providers": {
+        "items": {
+          "$ref": "#/$defs/ProviderSyncStatus"
+        },
+        "title": "Providers",
+        "type": "array"
+      },
+      "synced_at": {
+        "format": "date-time",
+        "title": "Synced At",
+        "type": "string"
+      }
+    },
+    "required": [
+      "providers",
+      "synced_at"
+    ],
+    "title": "SyncResult",
+    "type": "object"
+  },
+  "ValidateResult": {
+    "$defs": {
+      "ProviderValidation": {
+        "properties": {
+          "config_ok": {
+            "title": "Config Ok",
+            "type": "boolean"
+          },
+          "credentials_ok": {
+            "title": "Credentials Ok",
+            "type": "boolean"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "reachable": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reachable"
+          }
+        },
+        "required": [
+          "provider",
+          "config_ok",
+          "credentials_ok",
+          "reachable",
+          "error"
+        ],
+        "title": "ProviderValidation",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "config_path": {
+        "title": "Config Path",
+        "type": "string"
+      },
+      "providers": {
+        "items": {
+          "$ref": "#/$defs/ProviderValidation"
+        },
+        "title": "Providers",
+        "type": "array"
+      }
+    },
+    "required": [
+      "providers",
+      "config_path"
+    ],
+    "title": "ValidateResult",
+    "type": "object"
+  }
+}

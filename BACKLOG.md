@@ -1,20 +1,15 @@
 # Backlog (future versions: locked decisions + ideas)
 
-**Not the contract until merged into `PLANNED_INTERFACE.md`.** Holds work intended **after the current shipped contract**—**v2, v3+, or not yet version-tied**—until promoted or dropped.
+**Not contract** until merged into [`PLANNED_INTERFACE.md`](PLANNED_INTERFACE.md).
 
-| Layer | Meaning |
-|--------|--------|
-| **`Vx-…` register** (below) | Decisions **already made** for a **future major**, not yet copied into **`PLANNED_INTERFACE.md`**. |
-| **Open sections** (rest of file) | Explorations, options, and todos—**not decided** or not ready to be normative. |
+| Section | Meaning |
+|---------|---------|
+| `Vx-…` register | Locked outcome for a **future major**, not in the interface yet. One row = one decision; resolution text stays short (no v1 field lists). |
+| Open backlog | Ideas — not normative. One short paragraph each; point at contract for v1 behavior. |
 
-**v1 execution:** **`TODO.md`** + **`DECISIONS.md`** (**`D-…`** only). **`Vx-…`** IDs are for alignment and optional **`TODO_V2.md`** **`Refs:`**—not v1 blockers.
+v1 execution: [`TODO.md`](TODO.md) + [`DECISIONS.md`](DECISIONS.md) (`D-…`). `Vx-…` = future alignment only.
 
-| Doc | Role |
-|-----|------|
-| [`PLANNED_INTERFACE.md`](PLANNED_INTERFACE.md) | Normative for **shipped** behavior. |
-| [`DECISIONS.md`](DECISIONS.md) | v1 **`D-…`**. |
-| [`TODO.md`](TODO.md) | v1 checklist. |
-| **This file** | **`Vx-…`** + open backlog. |
+**Hygiene:** [`COLLABORATION_AND_AI_RULES.md`](COLLABORATION_AND_AI_RULES.md) §7 (quarterly / release).
 
 ---
 
@@ -24,7 +19,7 @@ Add a row when you **commit to an outcome** for v2 (or later) but are **not** re
 
 | ID | Topic | Resolution (short) | Promoted to `PLANNED_INTERFACE.md` |
 |----|--------|----------------------|-------------------------------------|
-| *(example)* **V2-EXAMPLE-FEATURE** | *(short title)* | *(one line)* | — |
+| *(none yet)* | | | |
 
 **Naming:** **`V{major}-UPPERCASE-SLUG`** (e.g. **`V2-NEW-API`**, **`V3-…`**).
 
@@ -32,16 +27,36 @@ Add a row when you **commit to an outcome** for v2 (or later) but are **not** re
 
 ## Open backlog
 
-Use headings for themes (integrations, hardening, UX, docs). Capture **options**, **tradeoffs**, and **links** to issues or PRs. When something becomes a locked future decision, add a **`Vx-…`** row above.
+When something becomes a locked future decision, add a **`Vx-…`** row above.
 
-### Template: decision log (optional)
+### Budget / threshold alerts
 
-| # | Topic | Decision | Date / note |
-|---|--------|----------|-------------|
-| 1 | *(e.g. retries)* | *(deferred / chosen)* | |
+Spend limits and notifications — needs a promoted contract section for configuration and how alerts reach the dashboard or caller (transport TBD).
 
----
+### Local HTTP server mode
 
-## Release / versioning notes (optional)
+Expose query/status over HTTP on localhost so a non-Python dashboard can use `fetch()` — pick framework, bind address, port, and entrypoint when promoted.
 
-*How you name releases, deprecations, or migration steps for integrators.*
+### Google Cloud provider
+
+Billing-API adapter via BigQuery export (GCP-billed APIs). Requires export + credentials story in the contract before implementation details belong here.
+
+### Advanced store management
+
+Beyond v1 **`reset`**: date-range delete/re-sync, export/import, retention, schema migrations — specify in interface when any of these become product commitments.
+
+### Non-currency usage metrics
+
+Tokens, requests, emails, bandwidth alongside USD spend — v1 is spend-first (**`PLANNED_INTERFACE.md`** §5–§6). Future: new fields, table(s), or **`query`**/`metric` shape; promote before coding.
+
+### Account balance and credit tracking
+
+Vendor balance/credit APIs (where available) — contract per provider when locked.
+
+### Spend forecasting and pricing analysis
+
+Forecasts, pricing suggestions, anomaly detection — analytical layer on top of stored data; no sync contract change until promoted.
+
+### Tag / label dimensions
+
+User-defined dimensions beyond **`provider`** + **`service`** — needs **`group_by`** / config rules in the contract.

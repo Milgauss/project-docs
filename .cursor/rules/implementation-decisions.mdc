@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Before implementing
 
-1. Open **`TODO.md`** for the target §. If it lists **`Refs: D-…`**, read those rows in **`DECISIONS.md`** (v1 **locked** register). **`PLANNED_INTERFACE.md`** / **README** must match.
+1. Open **`TODO.md`** for the target §. If it lists **`Refs: D-…`**, read those rows in **`DECISIONS.md`** (§2 shipped · §3 contract-locked, code may lag). **`PLANNED_INTERFACE.md`** is normative; **`README.md`** is commands + links only — do **not** paste new behavior into README without updating the contract (**§0** SoT table).
 
 2. If the § has no **`Refs: D-…`** yet or points only at open **`BACKLOG.md`** sections: work from backlog + interface — **do not invent behavior** until **`PLANNED_INTERFACE.md`** is updated. After locking, add **`D-…`** to **`DECISIONS.md`** and **`Refs:`** on the TODO §.
 
@@ -13,10 +13,14 @@ alwaysApply: true
 
 4. Trivial edits (typo, test-only) skip the above.
 
+5. **Public surface** (`__all__`, public **`BaseModel`**s, env-related behavior): follow **`COLLABORATION_AND_AI_RULES.md`** — **Public surface change checklist** and **Post-change ritual** (pytest, rename grep, schema export).
+
 Optional: short **“Decisions to confirm”** if the human has not chosen and the interface is silent.
 
 ## References
 
+- **`PLANNED_INTERFACE.md`** — contract; **§0** SoT; **§8** env vars (avoid duplicating in README)
+- **`README.md`** — **For coding agents** (table + paths) + copy-paste terminal blocks (`cd /path/to/api-spend`, venv, pytest); not a second spec
 - **`DECISIONS.md`** §2–§3 — shipped vs pending **`D-…`**; **§4** — open v1 forks
 - **`BACKLOG.md`** — **`Vx-…`** register + open ideas / todos for **v2 and later**
-- **`PLANNED_INTERFACE.md`** — contract
+- **`COLLABORATION_AND_AI_RULES.md`** — public-surface checklist, post-change ritual, **§7** backlog hygiene cadence
