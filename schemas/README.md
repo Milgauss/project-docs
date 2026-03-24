@@ -1,16 +1,19 @@
 # Schemas
 
+**Optional.** Python+Pydantic often uses this folder. Node may use root `openapi.json` or `docs/` — record in [`PLANNED_INTERFACE.md`](../PLANNED_INTERFACE.md) §0 instead.
+
 ## `public_pydantic_schemas.json`
 
-Machine-readable **JSON Schema** for each public **`BaseModel`** re-exported from **`api_spend`** (derived from `api_spend.__all__` via `model_json_schema()`).
+JSON Schema keyed by model name; from public `BaseModel` + `__all__`.
 
-- **Semantics** (field meaning, coverage rules, env names): [`PLANNED_INTERFACE.md`](../PLANNED_INTERFACE.md) §5–§6 and §8 (**§0** SoT).
-- **Regenerate** after changing those models:
+| Concern | Source |
+|---------|--------|
+| Field meaning, env | `PLANNED_INTERFACE.md` §0, §5–§8 |
+| Regen | `PUBLIC_PACKAGE` in [`scripts/export_public_schema.py`](../scripts/export_public_schema.py) then: |
 
-  ```bash
-  cd /path/to/api-spend
-  python scripts/export_public_schema.py
-  pytest -q tests/test_public_schema_snapshot.py
-  ```
+```bash
+cd /path/to/your-repo
+python scripts/export_public_schema.py
+```
 
-- **CI:** [`tests/test_public_schema_snapshot.py`](../tests/test_public_schema_snapshot.py) diffs this file to a fresh export.
+**CI:** Diff against fresh export when you add a snapshot test.

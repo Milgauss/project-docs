@@ -1,26 +1,37 @@
 ---
-description: v1 D-… + TODO Refs; Vx-… locked + open backlog (v2+); interface before code.
+description: v1 D-… + TODO Refs; Vx-… backlog; interface before code; BOOTSTRAP when present.
 alwaysApply: true
 ---
 
 # Before implementing
 
-1. Open **`TODO.md`** for the target §. If it lists **`Refs: D-…`**, read those rows in **`DECISIONS.md`** (§2 shipped · §3 contract-locked, code may lag). **`PLANNED_INTERFACE.md`** is normative; **`README.md`** is commands + links only — do **not** paste new behavior into README without updating the contract (**§0** SoT table).
+0. **`BOOTSTRAP.md` present?** Complete with human: tooling + README commands + `PLANNED_INTERFACE.md` §0 only (not §1–§7). Then human deletes file + fixes links. Absent → skip.
 
-2. If the § has no **`Refs: D-…`** yet or points only at open **`BACKLOG.md`** sections: work from backlog + interface — **do not invent behavior** until **`PLANNED_INTERFACE.md`** is updated. After locking, add **`D-…`** to **`DECISIONS.md`** and **`Refs:`** on the TODO §.
+0b. **`active-task.md` present?** (gitignored; copy from `active-task.template.md`.) Read **Goal** + **Status**. **Not SoT.** If `awaiting_human_approval` → propose doc updates + checklist; stop for human. If `approved` → execute checklist + normal rules. Trivial edits → ignore. Absent → skip.
 
-3. **Future versions (v2+):** Locked outcomes **before** **`PLANNED_INTERFACE.md`** merge → **`Vx-…`** rows in **`BACKLOG.md`** (**`V2-…`**, **`V3-…`**, …). Open ideas stay in the rest of that file. Promote to the interface before implementing.
+0c. **Human said Docs only / documentation only / narrow Touches:** — narrow file reads per [`README.md` human scope + Task row](README.md#human-scope); still update SoT files when behavior changes.
 
-4. Trivial edits (typo, test-only) skip the above.
+1. **`TODO.md`** for target §. If **`Refs: D-…`** → read **`DECISIONS.md`** §2–§3 (§2 shipped · §3 contract-locked, code may lag). **`PLANNED_INTERFACE.md`** normative. **`README.md`** = commands + links — no new behavior without contract §0 update.
 
-5. **Public surface** (`__all__`, public **`BaseModel`**s, env-related behavior): follow **`COLLABORATION_AND_AI_RULES.md`** — **Public surface change checklist** and **Post-change ritual** (pytest, rename grep, schema export).
+2. No **`Refs:`** or only **`BACKLOG.md`** → do not invent behavior until **`PLANNED_INTERFACE.md`** updated. Then **`D-…`** in **`DECISIONS.md`** + **`Refs:`** on TODO.
 
-Optional: short **“Decisions to confirm”** if the human has not chosen and the interface is silent.
+3. **v2+:** Outcomes locked before interface merge → **`Vx-…`** in **`BACKLOG.md`**; promote to interface before code.
+
+4. Typo / test-only → skip steps 0, 0b, 0c, 1, 2, 3.
+
+5. **Public surface** → **`COLLABORATION_AND_AI_RULES.md`** checklist (incl. types + **`PLANNED_INTERFACE.md`** contract revision line) + post-change ritual.
+
+*Optional:* “Decisions to confirm” if interface silent.
 
 ## References
 
-- **`PLANNED_INTERFACE.md`** — contract; **§0** SoT; **§8** env vars (avoid duplicating in README)
-- **`README.md`** — **For coding agents** (table + paths) + copy-paste terminal blocks (`cd /path/to/api-spend`, venv, pytest); not a second spec
-- **`DECISIONS.md`** §2–§3 — shipped vs pending **`D-…`**; **§4** — open v1 forks
-- **`BACKLOG.md`** — **`Vx-…`** register + open ideas / todos for **v2 and later**
-- **`COLLABORATION_AND_AI_RULES.md`** — public-surface checklist, post-change ritual, **§7** backlog hygiene cadence
+| File | Use |
+|------|-----|
+| `PLANNED_INTERFACE.md` | Contract; §0 SoT; §8 env |
+| `BOOTSTRAP.md` | If present: run once; delete after |
+| `README.md` | For coding agents; [task → open first](README.md#task-first-open); terminal blocks |
+| `AGENTS.md` | Optional tool entry → README |
+| `active-task.template.md` | Copy → `active-task.md` for complex tasks |
+| `DECISIONS.md` | §2–§3 `D-…`; §4 open |
+| `BACKLOG.md` | `Vx-…` |
+| `COLLABORATION_AND_AI_RULES.md` | Drift, ritual, §7 hygiene |

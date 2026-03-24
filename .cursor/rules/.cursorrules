@@ -1,17 +1,12 @@
 # Tech stack
 
-When starting new work or choosing libraries, **prefer entries marked with ✅** in the first column of the tables in **`FRAMEWORKS.md`** (repo root). Use the **section** that matches the layer of the problem (frontend, HTTP server, parsing, testing, etc.—see that file’s intro for how sections are ordered and how to pick a row). **`FRAMEWORKS.md`** is a starting point only; **this repo’s** locked Python stack is **`IMPLEMENTATION_PLAN.md`** §2. Disagree or suggest alternatives if better options exist.
+Do **not** open **`FRAMEWORKS.md`** unless the task is **adding or choosing a dependency.** Otherwise rely on **`IMPLEMENTATION_PLAN.md`** §2 + **`README.md`**.
 
-If nothing fits or **`FRAMEWORKS.md`** is absent, choose explicitly with the user or follow task-specific instructions.
+When adding a dependency: prefer ✅ in **`FRAMEWORKS.md`** by layer (HTTP, DB, tests, …); locked stack stays in **`IMPLEMENTATION_PLAN.md`** §2. Suggest better options when justified.
 
-# General guidelines
+# Workflow
 
-When planning a complex code change, always start with a plan of action and then ask me for approval on that plan.
-
-For simple changes, just make the code change but always think carefully and step-by-step about the change itself.
-
-When a function becomes too long, split it into smaller functions.
-
-When debugging a problem, make sure you have sufficient information to deeply understand the problem.
-
-More often than not, opt in to adding more logging and tracing to the code to help you understand the problem before making any changes. If you are provided logs that make the source of the problem obvious, then implement a solution. If you're still not 100% confident about the source of the problem, then reflect on 4-6 different possible sources of the problem, distill those down to 1-2 most likely sources, and then implement a solution for the most likely source - either adding more logging to validate your theory or implement the actual fix if you're extremely confident about the source of the problem.
+- **Complex change:** Short plan → human approval → implement.
+- **Simple:** Implement; think step-by-step.
+- **Long functions:** Split.
+- **Debug:** Enough context; prefer logs/traces before edits. If unclear, list 4–6 hypotheses → narrow to 1–2 → more logging or fix when confident.

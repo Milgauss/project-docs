@@ -1,43 +1,43 @@
-# System context (broader project)
+# System context
 
-**Status:** Template — replace comments and tables when this repo has a defined place in a parent system.
+**Optional.** How this repo fits a parent system. **If conflict →** [`PLANNED_INTERFACE.md`](PLANNED_INTERFACE.md) wins.
 
-**Normative behavior** stays in [`PLANNED_INTERFACE.md`](PLANNED_INTERFACE.md) and related contract docs. This file is **context only** for humans and AI agents: how *this* repository is expected to be used inside a larger product, monorepo, or deployment. If anything here conflicts with the contract, **the contract wins** (then update this file).
+**Agents:** Read only when integration boundaries matter; not SoT.
 
 ---
 
-## 1. Role in the larger system
+## 1. Role
 
-<!-- One short paragraph: what job api-spend performs for the parent (e.g. local spend sync + query for dashboards). -->
+<!-- This repo’s job for the parent. -->
 
-## 2. Parent project
+## 2. Parent
 
-<!-- Working name, repo or workspace location, primary stack (languages, orchestration). -->
+<!-- Name, location, stack. -->
 
-## 3. Boundary: this repo vs parent / siblings
+## 3. Boundary
 
-| In **this** repo (`api-spend`) | In the **parent** or **sibling** packages |
-|-------------------------------|-------------------------------------------|
-| <!-- e.g. sync, store, query, adapters --> | <!-- e.g. UI, auth, billing UI, orchestration --> |
+| This repo | Parent / siblings |
+|-----------|-------------------|
+| <!-- e.g. library --> | <!-- e.g. UI --> |
 
-## 4. Integration pattern
+## 4. Integration
 
-<!-- How the parent invokes this library: import path, submodule, path dependency, scheduled job, sidecar, subprocess, etc. Link to README “For dashboard integrators” if that already matches. -->
+<!-- Import, HTTP, job, sidecar, … -->
 
-## 5. Runtime and data flow
+## 5. Runtime / data flow
 
-<!-- Who runs `sync` and how often; where `config.yaml` / env live; store path or exported artifacts; who calls `query` and how results reach the UI. -->
+<!-- Who runs what; config/secrets; handoff. -->
 
-## 6. Assumptions and constraints
+## 6. Constraints
 
-<!-- e.g. single-writer SQLite, secrets only via env, Node never imports this package — only what helps future edits, not a copy of §8. -->
+<!-- Ops only; not a copy of contract §8 unless helpful. -->
 
-## 7. Related repos or packages
+## 7. Related repos
 
 | Name | Relationship |
 |------|--------------|
-| <!-- e.g. dashboard --> | <!-- consumer / dependency --> |
+| <!-- --> | <!-- --> |
 
 ## 8. Open questions
 
-<!-- Undecided integration details. Do not treat answers here as contract until promoted into PLANNED_INTERFACE / DECISIONS / BACKLOG as appropriate. -->
+<!-- Promote to PLANNED_INTERFACE / DECISIONS / BACKLOG before contract. -->

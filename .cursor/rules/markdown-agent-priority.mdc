@@ -1,26 +1,26 @@
 ---
-description: Markdown edits — structure docs for AI coding agents (navigable, SoT, grep-friendly).
+description: Markdown for AI agents — SoT, structure, no README duplication.
 globs:
   - "**/*.md"
 alwaysApply: false
 ---
 
-# Markdown: prefer agent usability
+# Markdown (agent-first)
 
-**Primary audience for edits to matching files:** AI coding agents (automation, search, long context). Humans still read the contract; optimize for **unambiguous structure**, not marketing prose.
+**Audience:** AI agents (grep, outline, long context). Prefer **structure** over narrative.
 
-1. **Single source of truth** — Normative behavior lives in `PLANNED_INTERFACE.md` (**§0** table). Do not paste API semantics, model field lists, or env var “complete lists” into `README.md` if §3–§8 already define them; link with **§ anchors** (and `#sources-of-truth` where useful).
+1. **SoT** — Normative behavior in `PLANNED_INTERFACE.md` §0 table. Do not paste API semantics, model fields, or full env lists into `README.md` if §3–§8 cover them — link § anchors / `#sources-of-truth`.
 
-2. `README.md` — Keep **For coding agents** accurate; use **copy-paste terminal blocks** (`cd /path/to/api-spend`, venv, exports). Operational only; defer definitions to the contract.
+2. **`README.md`** — **For coding agents** accurate; fenced **cd / install / test**. Operational only.
 
-3. **Discoverability** — Stable **headings** (agents `grep` / outline). Prefer **tables** for registers and env vars. Use **explicit symbol names** (`ApiSpend`, `API_SPEND_*`) over vague phrases.
+3. **Discoverability** — Stable `##` headings; **tables** for registers and env vars; contract symbol names, not vague prose.
 
-4. **Cross-links** — Prefer `PLANNED_INTERFACE.md` §x / file#anchor over “see above”. After renames, fix **both** ends of the link.
+4. **Links** — `PLANNED_INTERFACE.md` §x or `file#anchor`. Renames → fix both ends.
 
-5. **Duplication** — If two docs would say the same rule, **one** normative home + **one line + link** elsewhere. Exception: `COLLABORATION_AND_AI_RULES.md` may stay process-oriented for humans when it does not redefine product behavior.
+5. **One home** — One normative statement + link elsewhere. `COLLABORATION_AND_AI_RULES.md` may repeat **process** only, not product rules.
 
-6. **Non-repo markdown** — If a file is human-only narrative and not indexed for agents, narrow the glob later or ignore; current glob is all `**/*.md`.
+6. **`.cursorignore`** — e.g. `ai-prompt-examples.md` — not SoT; ignore for contract work. Other human-only files: narrow glob or ignore.
 
-7. **Public `BaseModel` fields** — When you change `PLANNED_INTERFACE.md` §5–§6 model shapes, update `schemas/public_pydantic_schemas.json` via `python scripts/export_public_schema.py` so `tests/test_public_schema_snapshot.py` stays green.
+7. **Schema drift** — Public shape change + committed artifact: **Python** `python scripts/export_public_schema.py` → `schemas/public_pydantic_schemas.json`. **Node** — documented regen. Keep snapshot test green.
 
-8. **Bold vs inline code** — Do not combine bold and backticks on the same text (e.g. do not bold a file path that is already in `code`). Use one: `filename.md` for paths and symbols, or **emphasis** for concepts only.
+8. **Format** — Do not combine **bold** with `` `backticks` `` on same span.

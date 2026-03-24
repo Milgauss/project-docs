@@ -1,25 +1,13 @@
+.DS_Store
+# Ephemeral mission file (copy from active-task.template.md); human deletes when task ends.
+active-task.md
+node_modules/
 .venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 build/
 dist/
-__pycache__/
-*.py[cod]
 *.egg-info/
-.pytest_cache/
-.DS_Store
-
-# Live test dumps (see API_SPEND_LIVE_DUMP_PATH)
-openai_live_costs.json
-anthropic_live_costs.json
-brightdata_live_costs.json
-brightdata_zone_cost_raw.json
-openai_raw_response.json
-anthropic_raw_response.json
-resend_live_snapshot.json
-resend_raw_response.json
-brave_live_snapshot.json
-brave_raw_response.json
-api_spend_full_stack_live.json
-
-#config for live full stack test
-config.yaml
-

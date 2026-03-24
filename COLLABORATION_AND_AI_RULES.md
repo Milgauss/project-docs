@@ -1,105 +1,104 @@
-# Collaboration: human + AI
+# Collaboration (agents + humans)
 
-Process and tooling for human + AI collaboration (reusable as a template). Product truth: `PLANNED_INTERFACE.md` and the registers below.
+**Product truth:** [`PLANNED_INTERFACE.md`](PLANNED_INTERFACE.md) §0 + registers below.
 
----
+**Agents — how much to read:** For routine coding and documentation work, read **§1–§5** only. Open **§6–§7** when editing practices in this file, doing **BACKLOG.md** / **implementation-notes.md** hygiene, or the human asks for lessons or maintenance cadence.
 
-## 1. Process
+**Human scope:** [`README.md` — Human: scope hint](README.md#human-scope) (e.g. **Docs only**).
 
-**Truth order:** `PLANNED_INTERFACE.md` overrides `IMPLEMENTATION_PLAN.md` and informal code assumptions.
+## 1. Agent workflow
 
-**Agents (default doc pass):** [`README.md`](README.md) **For coding agents** + **Documentation index** → `PLANNED_INTERFACE.md` (**§0** SoT, then task sections) → `TODO.md` (checklist; v1 phases 1–9 are complete) → `DECISIONS.md` §2–§3 for **`Refs: D-…`**. `implementation-notes.md` = retros only (non-normative).
+**Precedence:** `PLANNED_INTERFACE.md` > `IMPLEMENTATION_PLAN.md` > informal code.
+
+**Default doc pass**
+
+1. [`README.md`](README.md) **For coding agents** + doc index.
+2. If **`active-task.md`** exists (gitignored) → read **Goal** + **Status** + approved **Checklist** after human approval; **not SoT** — still update `PLANNED_INTERFACE.md` / registers per rules.
+3. If [`BOOTSTRAP.md`](BOOTSTRAP.md) exists → complete before product work → delete.
+4. `PLANNED_INTERFACE.md` §0, then task sections.
+5. [`TODO.md`](TODO.md) → [`DECISIONS.md`](DECISIONS.md) §2–§3 for **`Refs: D-…`**.
+6. [`implementation-notes.md`](implementation-notes.md) only for history (non-normative).
 
 **Registers**
 
-| Doc | Role |
-|-----|------|
-| `DECISIONS.md` | v1 **`D-…`**: section 2 shipped · section 3 locked (implementation may lag) · section 4 open. |
-| `TODO.md` | Ordered v1 work; **`Refs: D-…`** where a decision row exists. |
-| `BACKLOG.md` | **`Vx-…`** and v2+ ideas; promote into `PLANNED_INTERFACE.md` before treating as contract. Not **`D-…`** until folded into v1. |
+| File | Role |
+|------|------|
+| `DECISIONS.md` | `D-…` §2 shipped · §3 pending · §4 open |
+| `TODO.md` | Work order; **`Refs: D-…`** |
+| `BACKLOG.md` | `Vx-…` + ideas; promote to interface before contract |
 
-**Execution (AI):** Run install/tests yourself; iterate on failures. Well-scoped work does not need step-by-step approval.
+**Execution:** Run install/tests when toolchain exists; iterate. Trivial scope → skip **`active-task.md`** and extra approval theater.
 
-**Doc drift (PR / same change set):** If you change **public** behavior, models, or env vars: update **`PLANNED_INTERFACE.md`** first (§5–§6 fields, §8 names, §3–§5 semantics). Then **`README.md`** only if commands or discovery paths change — do **not** restate contract prose there (**§0** SoT). Grep **`README.md`** / **`IMPLEMENTATION_PLAN.md`** for old field or env names. **Automated:** **`tests/test_doc_drift.py`** (stale export wording, §0 anchor); **`tests/test_public_schema_snapshot.py`** vs **`schemas/public_pydantic_schemas.json`** — regenerate with **`python scripts/export_public_schema.py`** when public **`BaseModel`** shapes change.
+**`active-task.md`:** Prefer checklist items that **link or mirror** [`TODO.md`](TODO.md); do not duplicate long contract text inside the task file — edit SoT files directly.
 
-**Public surface change checklist**
+**Doc drift (same PR / change set)**
 
-1. **`PLANNED_INTERFACE.md`** — behavior, models, errors, **§8** env names (link § anchors from other docs).
-2. **`README.md`** — only if install commands, cwd, or discovery paths change; never paste new normative rules there (**§0**).
-3. **`src/api_spend/__init__.py`** — **`__all__`** and re-exports match the intended public API.
-4. **Schema snapshot** — if any public **`BaseModel`** in **`__all__`** changed: run **`python scripts/export_public_schema.py`** and commit **`schemas/public_pydantic_schemas.json`**.
-5. **`DECISIONS.md` / `TODO.md`** — new or moved **`D-…`** / **`Refs:`** when behavior was decision-gated.
+1. Public behavior / models / env → **`PLANNED_INTERFACE.md`** first.
+2. **`README.md`** → only if cwd/commands/paths change; never new normative prose (§0).
+3. `rg` old names in `*.md` and source.
+4. Generated schema/OpenAPI → regen via **documented** command (`export_public_schema.py` + `PUBLIC_PACKAGE` **or** Node pipeline); snapshot test green if present.
 
-**Post-change ritual:** `cd` to repo root (dir with `pyproject.toml`), venv on, then **`pytest`**. Rename grep: `cd /path/to/api-spend` then **`rg OLD_TOKEN --glob '*.md' --glob '*.yaml' src/ tests/`**. PRs: **CI** `.github/workflows/ci.yml` (Python 3.11 + 3.12).
+**Public surface checklist**
 
-**Code:** Minimal diffs; match local style; reuse helpers instead of parallel implementations.
+1. `PLANNED_INTERFACE.md` — §3–§8, §8 env names; bump **Contract revision** at top when normative §§ change.
+2. `README.md` — commands only if needed.
+3. Exports — Python `__all__`, package `exports`, OpenAPI, etc. match contract.
+4. **Static types (when stack uses them)** — **Python:** update **PEP 484** annotations for **public** APIs / models when shapes change; run **`mypy` / `pyright` / `basedpyright`** (or whatever the repo configures). **TypeScript / Node:** update shared **`.ts` types**, `d.ts`, or package **exports** the same way; run **`tsc --noEmit`** (or project check) if configured.
+5. Schema artifact — regen + §0 path if committed.
+6. `DECISIONS.md` / `TODO.md` — `D-…` / `Refs:` when decision-gated.
 
-**Explanations:** Prefer **code citations** (`startLine:endLine:path`) for existing code; clear prose; read the **thread** for intent (refinement vs new ask).
+**Post-change:** Repo root; env per README (venv / lockfile install); full tests; `rg` renames; add CI when code lands.
 
----
+**Code style:** Minimal diff; match file; reuse helpers.
 
-## 2. Cursor rules (this workspace)
+**Explanations:** Code citations `startLine:endLine:path`; use thread for intent.
 
-Under [`.cursor/rules/`](.cursor/rules/):
+## 2. Cursor rules
 
-| File | Purpose |
-|------|---------|
-| [`.cursorrules`](.cursor/rules/.cursorrules) | Complex work → short plan first; simple → implement; keep functions small; prefer evidence before guessing fixes. |
-| [`implementation-decisions.mdc`](.cursor/rules/implementation-decisions.mdc) | Before code: v1 ↔ `TODO` / `DECISIONS`; undecided behavior ↔ `BACKLOG` + interface update; future majors ↔ `Vx-…` then contract. |
-| [`markdown-agent-priority.mdc`](.cursor/rules/markdown-agent-priority.mdc) | When editing **`*.md`**: prefer agent-oriented structure (§0 SoT, links not duplicate prose, terminal blocks). |
+| File | Role |
+|------|------|
+| [`.cursorrules`](.cursor/rules/.cursorrules) | Plan vs implement; small functions; evidence when debugging |
+| [`implementation-decisions.mdc`](.cursor/rules/implementation-decisions.mdc) | TODO/DECISIONS; interface before code; `Vx-…` |
+| [`markdown-agent-priority.mdc`](.cursor/rules/markdown-agent-priority.mdc) | Edit `*.md`: SoT, tables, links, terminal blocks |
 
-**New repo:** Copy `.cursor/rules/`, fix paths, adjust `globs` / `alwaysApply` on `.mdc` files.
+New repo: copy `.cursor/rules/`; fix paths; adjust `globs` / `alwaysApply`.
 
----
+## 3. Global user rules (optional)
 
-## 3. User-level rules (optional)
+Run commands; fix failures; markdown links for web; repo paths in code fences; never echo secrets.
 
-Often set as **global Cursor user rules**. Themes: run commands and fix issues yourself; **markdown links** for web refs; **code blocks** for repo code; never log or echo **secrets**.
+## 4. Bootstrap vs interface planning
 
----
+| Phase | Do |
+|-------|-----|
+| **`BOOTSTRAP.md` present** | Run end-to-end: tooling + README commands + `PLANNED_INTERFACE.md` §0 machinery only. Delete file; `rg BOOTSTRAP.md`. |
+| **After removal** | README + `IMPLEMENTATION_PLAN.md` §2 only. |
+| **Interface planning** | Human drives `PLANNED_INTERFACE.md` §1+ → then `DECISIONS` / `TODO` / `BACKLOG` / tests / `.env.example`. |
+| **Active task** | Optional: [`active-task.template.md`](active-task.template.md) → **`active-task.md`** (gitignored). Human deletes **`active-task.md`** when task completes. |
 
-## 4. Bootstrap checklist (new project)
+## 5. Template rename pass
 
-1. One contract doc (API, formats, errors).
-2. `DECISIONS.md` + `TODO.md` with `Refs: D-…` where locked.
-3. `BACKLOG.md` with `Vx-…` + v2+ ideas.
-4. Cursor rules that point at the above.
-5. Runnable tests; README; `.env.example` / validate flow if env-gated.
+Replace **Your Project** / org / package strings. Grow `PLANNED_INTERFACE.md` before real `TODO` phases. One `D-…` per fork in `DECISIONS.md`.
 
----
+## 6. Lessons
 
-## 5. Applying this template to your repo
+Prune stale bullets; promote durable ones here from `implementation-notes.md`.
 
-**This repo:** dist **`api-spend`**, import **`api_spend`**, product **API Spend** (v1 = Python library). Keep names aligned in packaging and docs. Grow `PLANNED_INTERFACE.md` before `TODO.md`; one **`D-…`** row per real fork in `DECISIONS.md`.
+- Names: contract ≡ code ≡ tests ≡ schema fields.
+- Before deleting fixtures: `rg` paths; run tests.
+- Examples in contract = shipped shape; futures → `BACKLOG.md`.
+- Committed schema: regen script + snapshot test.
+- Live tests: off by default + env flag; document in README.
+- Python: `python3 -m venv .venv`; `.venv/` gitignored; PEP 668.
+- Node: lockfile + Node version (`.nvmrc` / `engines` / Volta); `node_modules/` gitignored.
+- Validation errors → documented public error types at boundaries.
+- Python logging: named loggers under package; app sets handlers; no secrets.
+- Node logging: structured + redact secrets.
 
----
+## 7. Maintain
 
-## 6. Lessons learned
+**§6:** Update when practices change. **§1–§5:** Match docs you actually use. **Agents:** see **How much to read** at top — skip §6–§7 unless hygiene or explicit ask.
 
-Short, actionable; prune when stale. Append when something pays off or burns you; copy or trim when starting a sibling project. When **`implementation-notes.md`** phase retros get long, **promote** enduring bullets here first, then compress or delete the duplicate phase text (see **§7** — **`implementation-notes` hygiene**).
+**`BACKLOG.md`:** Quarterly or per release — ship folded items; short `Vx-…`; open bullets must not duplicate contract.
 
-- **Vocabulary:** Match the contract and schema field names in code, tests, and docs.
-- **Scratch artifacts:** Before deleting generated files or fixtures, grep the repo for paths; run tests after cleanup.
-- **Samples:** Contract examples should match what is shipped; future-only fields → `BACKLOG.md` or marked drafts.
-- **CLI help vs README:** If you ship a CLI, keep `--help`, README, and tests aligned when help text is asserted.
-- **JSON Schema:** Commit exported schema and test it against `model_json_schema()` (or your export script) so refactors cannot drift silently.
-- **Integration tests:** Live tests **skipped by default** — [README](README.md) **Live API tests** (`API_SPEND_LIVE_TESTS=1`, keys, dump/raw paths). Full-stack: **`tests/test_api_spend_live.py`**. Mocked facade: **`tests/test_client.py`** — inject `SpendStore.open(":memory:")`, `ApiSpend(..., http_client=httpx.Client(MockTransport(...)))`, **close the HTTP client** after `ApiSpend.close()` (injected client not owned by facade). Keep default **`pytest`** fast.
-- **PEP 668 / `venv`:** Many dev machines use a system Python that rejects `pip install` without a venv. Default to `python3 -m venv .venv`, `pip install -e ".[dev]"`, and `pytest` in docs and agent runs; add `.venv/` to `.gitignore`.
-- **Small fixed string unions in contracts:** When the interface names a closed set of string values (e.g. `coverage`), `typing.Literal[...]` on Pydantic fields validates at parse time; serialized output remains plain strings for dashboards.
-- **Public errors vs Pydantic:** Catch `pydantic.ValidationError` at the config boundary and re-raise as `ConfigError` with a short, joined message so callers only handle the documented exception types (`PLANNED_INTERFACE.md` §7).
-- **Credential env names:** Use an explicit `provider → env var` map (§8); do not derive names from YAML `name` alone.
-- **SQLite store path:** `SpendStore.open(file_path)` should `mkdir(parents=True)` for the DB’s parent directory. Use `PRAGMA page_count` × `PRAGMA page_size` for a portable **approximate** byte size (including `:memory:`). Persist datetimes as UTC ISO strings; normalize naive `datetime` to UTC when writing.
-- **Pydantic v2 `BaseModel` constructors:** Prefer **keyword arguments** in tests and example code (`SpendRecord(provider=..., date=...)`). Positional args fail fast with an opaque `TypeError` (“takes 1 positional argument but N were given”), which is easy to misread as a pytest or import problem.
-- **Mocking `httpx`:** Prefer **`httpx.MockTransport`** for adapter tests.
-- **Billing adapters:** Document odd amount units or unlabeled time buckets in **`PLANNED_INTERFACE.md`** §3.1 so consumers do not infer behavior.
-- **Library logging:** Use **`caplog.set_level(logging.INFO, logger="api_spend.client")`** (or the child logger under test) when asserting **`api_spend`** log lines; the root logger stays quiet by default. Keep **INFO** lines short; put long adapter errors on **DEBUG** per **`D-LOGGING-V1`**.
-
----
-
-## 7. Maintaining this file
-
-Update **section 6** when team practices evolve; keep **sections 1–5** aligned with the doc set you actually use.
-
-**`BACKLOG.md` hygiene (scheduled):** At least **quarterly** (or each release), open **`BACKLOG.md`**: fold or delete items that have **shipped**; keep **`Vx-…`** rows short (locked future outcomes only, no v1 contract prose); trim **open backlog** bullets so they do **not** duplicate **`PLANNED_INTERFACE.md`**. Optional: add a recurring calendar reminder or release checklist line so this is not only ad hoc. **`TODO.md`** Phase 9 includes a checkbox that points here.
-
-**`implementation-notes.md` hygiene:** Not on a fixed calendar — **on each release** or when editing code a phase retro touches, apply **Maintenance (pruning)** at the top of that file: drop obsolete bullets, compress stable sections, **promote** enduring lessons into **§6** here first, then shorten or remove duplicates. Keep **`### Phase N`** headings for archaeology.
+**`implementation-notes.md`:** On release or touched code — prune; promote to §6 first.
