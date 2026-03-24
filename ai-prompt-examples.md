@@ -71,7 +71,7 @@ Please review any issue, difficulty, or friction you encountered in implementing
 ```
 
 ```
-Make a full pass through the docs for accuracy, clarity, and brevity. Prioritize useability for an AI agent like you over a human. In README.md, favor more thorough terminal command examples (e.g. include `cd /path/to/api-spend`).
+Make a full pass through the docs for accuracy, clarity, and brevity. Prioritize useability for an AI agent like you over a human. Do not remove any template instructions even if they are currently not in use. In README.md, favor more thorough terminal command examples (e.g. include `cd /path/to/api-spend`).
 
 Backlog hygiene: remove or fold shipped items; ensure Vx-… vs open ideas don’t duplicate contract text.
 ```
