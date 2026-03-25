@@ -2,7 +2,7 @@
 
 Thin entry point for tools that look for **`AGENTS.md`**. **Normative detail lives elsewhere** — do not duplicate contract text here.
 
-**Precedence:** `PLANNED_INTERFACE.md` > `IMPLEMENTATION_PLAN.md` > code.
+**Precedence:** `PLANNED_INTERFACE.md` > `PLAN.md` > code.
 
 **SoT table:** [`PLANNED_INTERFACE.md` §0](PLANNED_INTERFACE.md#sources-of-truth)
 

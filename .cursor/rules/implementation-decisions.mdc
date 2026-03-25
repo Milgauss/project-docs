@@ -1,19 +1,19 @@
 ---
-description: v1 D-… + TODO Refs; Vx-… backlog; interface before code; BOOTSTRAP when present.
+description: v1 D-… + PLAN Refs; Vx-… backlog; interface before code; BOOTSTRAP when present.
 alwaysApply: true
 ---
 
 # Before implementing
 
-0. **`BOOTSTRAP.md` present?** Complete with human: tooling + README commands + `PLANNED_INTERFACE.md` §0 only (not §1–§7). Then human deletes file + fixes links. Absent → skip.
+0. **`BOOTSTRAP.md` present?** Complete with human: tooling + README commands + `PLANNED_INTERFACE.md` §0 only (not §1–§7). Then human renames file to `INIT_LOG.md` + fixes links. Absent → skip.
 
-0b. **`active-task.md` present?** (gitignored; copy from `active-task.template.md`.) Read **Goal** + **Status**. **Not SoT.** If `awaiting_human_approval` → propose doc updates + checklist; stop for human. If `approved` → execute checklist + normal rules. Trivial edits → ignore. Absent → skip.
+0b. **`active-task.md` present?** (gitignored; copy from `active-task.template.md`.) Read **Goal** + **Proposed Plan** + **Execution Log**. **Not SoT.** If human hasn't approved yet → propose doc updates + checklist; stop for human. If human approved → execute checklist + normal rules. Trivial edits → ignore. Absent → skip.
 
 0c. **Human said Docs only / documentation only / narrow Touches:** — narrow file reads per [`README.md` human scope + Task row](README.md#human-scope); still update SoT files when behavior changes.
 
-1. **`TODO.md`** for target §. If **`Refs: D-…`** → read **`DECISIONS.md`** §2–§3 (§2 shipped · §3 contract-locked, code may lag). **`PLANNED_INTERFACE.md`** normative. **`README.md`** = commands + links — no new behavior without contract §0 update.
+1. **`PLAN.md`** checklists. If **`Refs: D-…`** → read **`DECISIONS.md`** §2–§3 (§2 shipped · §3 contract-locked, code may lag). **`PLANNED_INTERFACE.md`** normative. **`README.md`** = commands + links — no new behavior without contract §0 update.
 
-2. No **`Refs:`** or only **`BACKLOG.md`** → do not invent behavior until **`PLANNED_INTERFACE.md`** updated. Then **`D-…`** in **`DECISIONS.md`** + **`Refs:`** on TODO.
+2. No **`Refs:`** or only **`BACKLOG.md`** → do not invent behavior until **`PLANNED_INTERFACE.md`** updated. Then **`D-…`** in **`DECISIONS.md`** + **`Refs:`** on `PLAN.md`.
 
 3. **v2+:** Outcomes locked before interface merge → **`Vx-…`** in **`BACKLOG.md`**; promote to interface before code.
 
@@ -28,7 +28,8 @@ alwaysApply: true
 | File | Use |
 |------|-----|
 | `PLANNED_INTERFACE.md` | Contract; §0 SoT; §8 env |
-| `BOOTSTRAP.md` | If present: run once; delete after |
+| `PLAN.md` | Stack, architecture, phase checklists |
+| `BOOTSTRAP.md` | If present: run once; rename to `INIT_LOG.md` |
 | `README.md` | For coding agents; [task → open first](README.md#task-first-open); terminal blocks |
 | `AGENTS.md` | Optional tool entry → README |
 | `active-task.template.md` | Copy → `active-task.md` for complex tasks |

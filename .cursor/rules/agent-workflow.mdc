@@ -1,0 +1,37 @@
+# Agent Workflow
+
+**Precedence:** `PLANNED_INTERFACE.md` > `PLAN.md` > informal code.
+
+**Default doc pass**
+
+1. If **`active-task.md`** exists (gitignored) → read **Goal** + **Proposed Plan** + **Execution Log**; **not SoT** — still update `PLANNED_INTERFACE.md` / registers per rules.
+2. If [`BOOTSTRAP.md`](BOOTSTRAP.md) exists → complete before product work.
+3. `PLANNED_INTERFACE.md` §0, then task sections.
+4. [`PLAN.md`](PLAN.md) → [`DECISIONS.md`](DECISIONS.md) §2–§3 for **`Refs: D-…`**.
+5. [`implementation-notes.md`](implementation-notes.md) only for history (non-normative).
+
+**Registers**
+
+| File | Role |
+|------|------|
+| `DECISIONS.md` | `D-…` §2 shipped · §3 pending · §4 open |
+| `PLAN.md` | Work order; **`Refs: D-…`** |
+| `BACKLOG.md` | `Vx-…` + ideas; promote to interface before contract |
+
+**Execution:** Run install/tests when toolchain exists; iterate. Trivial scope → skip **`active-task.md`** and extra approval theater.
+
+**`active-task.md`:** Prefer checklist items that **link or mirror** [`PLAN.md`](PLAN.md); do not duplicate long contract text inside the task file — edit SoT files directly.
+
+**Post-Change Ritual**
+
+Before finishing a task, always do a quick `rg 'D-[A-Za-z0-9-]+'` to ensure your `PLAN.md` and `DECISIONS.md` are perfectly in sync.
+
+Repo root; env per README (venv / lockfile install); full tests; `rg` renames; add CI when code lands.
+
+**Public surface checklist**
+
+1. `PLANNED_INTERFACE.md` — §3–§8, §8 env names; bump **Contract revision** at top when normative §§ change.
+2. `README.md` — commands only if needed.
+3. Exports — Python `__all__`, package `exports`, OpenAPI, etc. match contract.
+4. Schema artifact — regen + §0 path if committed.
+5. `DECISIONS.md` / `PLAN.md` — `D-…` / `Refs:` when decision-gated.

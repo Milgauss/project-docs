@@ -1,8 +1,8 @@
 # Tech stack
 
-Do **not** open **`FRAMEWORKS.md`** unless the task is **adding or choosing a dependency.** Otherwise rely on **`IMPLEMENTATION_PLAN.md`** §2 + **`README.md`**.
+Do **not** open **`FRAMEWORKS.md`** unless the task is **adding or choosing a dependency.** Otherwise rely on **`PLAN.md`** §2 + **`README.md`**.
 
-When adding a dependency: prefer ✅ in **`FRAMEWORKS.md`** by layer (HTTP, DB, tests, …); locked stack stays in **`IMPLEMENTATION_PLAN.md`** §2. Suggest better options when justified.
+When adding a dependency: prefer ✅ in **`FRAMEWORKS.md`** by layer (HTTP, DB, tests, …); locked stack stays in **`PLAN.md`** §2. Suggest better options when justified.
 
 # Workflow
 
@@ -10,3 +10,4 @@ When adding a dependency: prefer ✅ in **`FRAMEWORKS.md`** by layer (HTTP, DB, 
 - **Simple:** Implement; think step-by-step.
 - **Long functions:** Split.
 - **Debug:** Enough context; prefer logs/traces before edits. If unclear, list 4–6 hypotheses → narrow to 1–2 → more logging or fix when confident.
+- **Post-Change Ritual:** Before finishing a task, always do a quick `rg 'D-[A-Za-z0-9-]+'` to ensure your `PLAN.md` and `DECISIONS.md` are perfectly in sync.

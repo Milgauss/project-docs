@@ -8,44 +8,18 @@
 
 ## 1. Agent workflow
 
-**Precedence:** `PLANNED_INTERFACE.md` > `IMPLEMENTATION_PLAN.md` > informal code.
-
-**Default doc pass**
-
-1. [`README.md`](README.md) **For coding agents** + doc index.
-2. If **`active-task.md`** exists (gitignored) → read **Goal** + **Status** + approved **Checklist** after human approval; **not SoT** — still update `PLANNED_INTERFACE.md` / registers per rules.
-3. If [`BOOTSTRAP.md`](BOOTSTRAP.md) exists → complete before product work → delete.
-4. `PLANNED_INTERFACE.md` §0, then task sections.
-5. [`TODO.md`](TODO.md) → [`DECISIONS.md`](DECISIONS.md) §2–§3 for **`Refs: D-…`**.
-6. [`implementation-notes.md`](implementation-notes.md) only for history (non-normative).
-
-**Registers**
-
-| File | Role |
-|------|------|
-| `DECISIONS.md` | `D-…` §2 shipped · §3 pending · §4 open |
-| `TODO.md` | Work order; **`Refs: D-…`** |
-| `BACKLOG.md` | `Vx-…` + ideas; promote to interface before contract |
-
-**Execution:** Run install/tests when toolchain exists; iterate. Trivial scope → skip **`active-task.md`** and extra approval theater.
-
-**`active-task.md`:** Prefer checklist items that **link or mirror** [`TODO.md`](TODO.md); do not duplicate long contract text inside the task file — edit SoT files directly.
+See [`.cursor/rules/agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc) for the primary workflow.
 
 **Doc drift (same PR / change set)**
 
 1. Public behavior / models / env → **`PLANNED_INTERFACE.md`** first.
-2. **`README.md`** → only if cwd/commands/paths change; never new normative prose (§0).
+2. **`README.md`** → only if cwd/commands/paths change; never new normative prose (per `PLANNED_INTERFACE.md` §0).
 3. `rg` old names in `*.md` and source.
 4. Generated schema/OpenAPI → regen via **documented** command (`export_public_schema.py` + `PUBLIC_PACKAGE` **or** Node pipeline); snapshot test green if present.
 
 **Public surface checklist**
 
-1. `PLANNED_INTERFACE.md` — §3–§8, §8 env names; bump **Contract revision** at top when normative §§ change.
-2. `README.md` — commands only if needed.
-3. Exports — Python `__all__`, package `exports`, OpenAPI, etc. match contract.
-4. **Static types (when stack uses them)** — **Python:** update **PEP 484** annotations for **public** APIs / models when shapes change; run **`mypy` / `pyright` / `basedpyright`** (or whatever the repo configures). **TypeScript / Node:** update shared **`.ts` types**, `d.ts`, or package **exports** the same way; run **`tsc --noEmit`** (or project check) if configured.
-5. Schema artifact — regen + §0 path if committed.
-6. `DECISIONS.md` / `TODO.md` — `D-…` / `Refs:` when decision-gated.
+See [`.cursor/rules/agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc) for the public surface checklist.
 
 **Post-change:** Repo root; env per README (venv / lockfile install); full tests; `rg` renames; add CI when code lands.
 
@@ -57,8 +31,8 @@
 
 | File | Role |
 |------|------|
-| [`.cursorrules`](.cursor/rules/.cursorrules) | Plan vs implement; small functions; evidence when debugging |
-| [`implementation-decisions.mdc`](.cursor/rules/implementation-decisions.mdc) | TODO/DECISIONS; interface before code; `Vx-…` |
+| [`agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc) | Default doc pass, execution, doc drift |
+| [`implementation-decisions.mdc`](.cursor/rules/implementation-decisions.mdc) | PLAN/DECISIONS; interface before code; `Vx-…` |
 | [`markdown-agent-priority.mdc`](.cursor/rules/markdown-agent-priority.mdc) | Edit `*.md`: SoT, tables, links, terminal blocks |
 
 New repo: copy `.cursor/rules/`; fix paths; adjust `globs` / `alwaysApply`.
@@ -71,14 +45,14 @@ Run commands; fix failures; markdown links for web; repo paths in code fences; n
 
 | Phase | Do |
 |-------|-----|
-| **`BOOTSTRAP.md` present** | Run end-to-end: tooling + README commands + `PLANNED_INTERFACE.md` §0 machinery only. Delete file; `rg BOOTSTRAP.md`. |
-| **After removal** | README + `IMPLEMENTATION_PLAN.md` §2 only. |
-| **Interface planning** | Human drives `PLANNED_INTERFACE.md` §1+ → then `DECISIONS` / `TODO` / `BACKLOG` / tests / `.env.example`. |
+| **`BOOTSTRAP.md` present** | Run end-to-end: tooling + README commands + `PLANNED_INTERFACE.md` §0 machinery only. Rename file to `INIT_LOG.md`; `rg BOOTSTRAP.md`. |
+| **After removal/rename** | README + `PLAN.md` §2 only. |
+| **Interface planning** | Human drives `PLANNED_INTERFACE.md` §1+ → then `DECISIONS.md` / `PLAN.md` / `BACKLOG.md` / tests / `.env.example`. |
 | **Active task** | Optional: [`active-task.template.md`](active-task.template.md) → **`active-task.md`** (gitignored). Human deletes **`active-task.md`** when task completes. |
 
 ## 5. Template rename pass
 
-Replace **Your Project** / org / package strings. Grow `PLANNED_INTERFACE.md` before real `TODO` phases. One `D-…` per fork in `DECISIONS.md`.
+Replace **Your Project** / org / package strings. Grow `PLANNED_INTERFACE.md` before real `PLAN.md` checklists. One `D-…` per fork in `DECISIONS.md`.
 
 ## 6. Lessons
 

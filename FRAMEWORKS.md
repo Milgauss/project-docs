@@ -1,6 +1,6 @@
 # Frameworks and tools
 
-**Agents — do not read this file** unless the task is **choosing or adding a dependency.** Otherwise use [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md) §2 and [`README.md`](README.md) (install/test). **Not SoT.**
+Unless the task is **choosing or adding a dependency**, do **not** open this file. Otherwise use `[PLAN.md](PLAN.md)` §2 and `[README.md](README.md)` (install/test). **Not SoT.**
 
 **When you are picking a library:** Prefer ✅ rows; choose the **section** by layer (app → HTTP → DB → ML → ops → tooling → IO). If nothing fits, ask the human.
 
@@ -10,7 +10,7 @@
 
 
 |     | Name         | Description                                                                                          | Homepage                                    | Documentation                                     |
-| :-: | ------------ | ---------------------------------------------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------- |
+| --- | ------------ | ---------------------------------------------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------- |
 | ✅   | Tailwind CSS | Utility-first CSS framework for rapid UI layout and design tokens in HTML/JSX.                       | [tailwindcss.com](https://tailwindcss.com/) | [Tailwind CSS docs](https://tailwindcss.com/docs) |
 |     | Next.js 15   | React framework with App Router, server components, and built-in routing and optimizations.          | [nextjs.org](https://nextjs.org/)           | [Next.js docs](https://nextjs.org/docs)           |
 |     | React        | UI library for building component trees; hooks, concurrent features, and a vast ecosystem.           | [react.dev](https://react.dev/)             | [React documentation](https://react.dev/learn)    |
@@ -94,7 +94,7 @@
 
 
 |     | Name        | Description                                                                            | Homepage                                  | Documentation                                    |
-| :-: | ----------- | -------------------------------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------ |
+| --- | ----------- | -------------------------------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------ |
 | ✅   | Bright Data | Web data collection platform: proxies, scraping browser, datasets, and unblocker APIs. | [brightdata.com](https://brightdata.com/) | [Bright Data docs](https://docs.brightdata.com/) |
 
 
@@ -130,7 +130,7 @@
 
 
 |     | Name         | Description                                                                                            | Homepage                                                               | Documentation                                                              |
-| :-: | ------------ | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| --- | ------------ | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 |     | Scikit-learn | Classical ML: estimators, pipelines, preprocessing, model selection, and metrics in NumPy/SciPy.       | [scikit-learn.org](https://scikit-learn.org/)                          | [scikit-learn user guide](https://scikit-learn.org/stable/user_guide.html) |
 |     | XGBoost      | Gradient-boosted trees for tabular data; fast training, distributed support, and multiple APIs.        | [xgboost.ai](https://xgboost.ai/)                                      | [XGBoost documentation](https://xgboost.readthedocs.io/)                   |
 |     | LightGBM     | Gradient boosting from Microsoft; leaf-wise trees, speed on large tabular data, and sklearn-style API. | [github.com/microsoft/LightGBM](https://github.com/microsoft/LightGBM) | [LightGBM documentation](https://lightgbm.readthedocs.io/)                 |
@@ -160,7 +160,7 @@
 
 
 |     | Name       | Description                                                                             | Homepage                                  | Documentation                                                     |
-| :-: | ---------- | --------------------------------------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------- |
+| --- | ---------- | --------------------------------------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------- |
 | ✅   | pytest     | Python testing framework with fixtures, parametrization, and a rich plugin ecosystem.   | [pytest.org](https://pytest.org/)         | [pytest documentation](https://docs.pytest.org/)                  |
 |     | Playwright | End-to-end browser automation and testing across Chromium, Firefox, and WebKit.         | [playwright.dev](https://playwright.dev/) | [Playwright docs](https://playwright.dev/docs/intro)              |
 |     | Selenium   | Browser automation and WebDriver ecosystem; cross-browser testing and grid deployments. | [selenium.dev](https://www.selenium.dev/) | [Selenium documentation](https://www.selenium.dev/documentation/) |
@@ -179,7 +179,7 @@
 
 
 |     | Name  | Description                                                     | Homepage                                          | Documentation                                      |
-| :-: | ----- | --------------------------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
+| --- | ----- | --------------------------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
 | ✅   | Typer | Builds CLIs with type hints and automatic help, built on Click. | [typer.tiangolo.com](https://typer.tiangolo.com/) | [Typer documentation](https://typer.tiangolo.com/) |
 
 
@@ -187,7 +187,7 @@
 
 
 |     | Name     | Description                                                                                            | Homepage                              | Documentation                                        |
-| :-: | -------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------- | ---------------------------------------------------- |
+| --- | -------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------- | ---------------------------------------------------- |
 | ✅   | Pydantic | Data validation, serialization, and settings using type annotations (v2 is the current major release). | [pydantic.dev](https://pydantic.dev/) | [Pydantic documentation](https://docs.pydantic.dev/) |
 
 
@@ -195,7 +195,7 @@
 
 
 |     | Name     | Description                                                                      | Homepage                                                   | Documentation                                                        |
-| :-: | -------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------- |
+| --- | -------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------- |
 | ✅   | httpx    | Modern async-capable HTTP client for Python with HTTP/2 and a requests-like API. | [python-httpx.org](https://www.python-httpx.org/)          | [HTTPX documentation](https://www.python-httpx.org/)                 |
 |     | Requests | De facto sync HTTP library for Python; sessions, auth hooks, and huge mindshare. | [github.com/psf/requests](https://github.com/psf/requests) | [Requests documentation](https://requests.readthedocs.io/en/latest/) |
 
@@ -212,7 +212,7 @@
 
 
 |     | Name        | Description                                                           | Homepage                                                                                             | Documentation                                                       |
-| :-: | ----------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| --- | ----------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | ✅   | Markdownify | Converts HTML to Markdown, useful for scraping and cleanup pipelines. | [github.com/matthewwithanm/python-markdownify](https://github.com/matthewwithanm/python-markdownify) | [Markdownify on Read the Docs](https://markdownify.readthedocs.io/) |
 
 
@@ -220,7 +220,7 @@
 
 
 |     | Name             | Description                                                                        | Homepage                                                                            | Documentation                                                                 |
-| :-: | ---------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| --- | ---------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | ✅   | Beautiful Soup 4 | Pulls data out of HTML and XML with forgiving parsers and a simple navigation API. | [crummy.com/software/BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/) | [Beautiful Soup docs](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) |
 
 
@@ -228,7 +228,7 @@
 
 
 |     | Name   | Description                                                               | Homepage                          | Documentation                                                       |
-| :-: | ------ | ------------------------------------------------------------------------- | --------------------------------- | ------------------------------------------------------------------- |
+| --- | ------ | ------------------------------------------------------------------------- | --------------------------------- | ------------------------------------------------------------------- |
 | ✅   | PyYAML | YAML parser and emitter for Python; load/dump config and structured data. | [pyyaml.org](https://pyyaml.org/) | [PyYAML documentation](https://pyyaml.org/wiki/PyYAMLDocumentation) |
 
 
@@ -236,7 +236,7 @@
 
 
 |     | Name          | Description                                                                           | Homepage                                                                         | Documentation                                                             |
-| :-: | ------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| --- | ------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 |     | python-dotenv | Reads key-value pairs from a `.env` file into the process environment (`os.environ`). | [github.com/theskumar/python-dotenv](https://github.com/theskumar/python-dotenv) | [python-dotenv README](https://github.com/theskumar/python-dotenv#readme) |
 
 

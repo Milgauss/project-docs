@@ -1,10 +1,10 @@
-# Bootstrap (delete when done)
+# Bootstrap
 
-**Agent + human.** One-time: align **tooling**, **README copy-paste commands**, and **`PLANNED_INTERFACE.md` §0** (schema/OpenAPI *paths and regen only*).
+**Agent + human.** One-time: align **tooling**, **README copy-paste commands**, and `PLANNED_INTERFACE.md` §0 (schema/OpenAPI *paths and regen only*).
 
-**Do not:** fill `PLANNED_INTERFACE.md` §1–§7, add product **`D-…`**, or expand `TODO`/`BACKLOG` with design — unless the human explicitly switches to interface planning in the same thread.
+**Do not:** fill `PLANNED_INTERFACE.md` §1–§7, add product **D-…**, or expand `PLAN.md`/`BACKLOG.md` with design — unless the human explicitly switches to interface planning in the same thread.
 
-**While this file exists:** `README.md` **For coding agents** is the permanent home for commands; this file is the questionnaire + checklist.
+**While this file is incomplete:** `README.md` **For coding agents** is the permanent home for commands; this file is the questionnaire + checklist.
 
 ---
 
@@ -22,24 +22,26 @@
 
 ## Agent edits (framework only)
 
-| # | Target | Action |
-|---|--------|--------|
-| 1 | `IMPLEMENTATION_PLAN.md` §2 | Fill stack table from answers. |
-| 2 | `README.md` | Fenced **cd**, **install**, **test** under **For coding agents**. |
-| 3 | `PLANNED_INTERFACE.md` §0 | Update optional-schema row; no dead paths; honest **none yet**. |
-| 4 | Optional | Human wants minimal tree + no Pydantic → remove unused `schemas/`, `scripts/export_public_schema.py`; fix §0. |
-| 5 | Optional | `.nvmrc`, `engines`, `.gitignore` per human. |
-| 6 | Optional | Minimal CI + mention in README if human asked. |
+
+| #   | Target                    | Action                                                                                                        |
+| --- | ------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| 1   | `PLAN.md` §2              | Fill stack table from answers.                                                                                |
+| 2   | `README.md`               | Fenced **cd**, **install**, **test** under **For coding agents**.                                             |
+| 3   | `PLANNED_INTERFACE.md` §0 | Update optional-schema row; no dead paths; honest **none yet**.                                               |
+| 4   | Optional                  | Human wants minimal tree + no Pydantic → remove unused `schemas/`, `scripts/export_public_schema.py`; fix §0. |
+| 5   | Optional                  | `.nvmrc`, `engines`, `.gitignore` per human.                                                                  |
+| 6   | Optional                  | Minimal CI + mention in README if human asked.                                                                |
+
 
 ---
 
 ## Done when
 
-- [ ] `IMPLEMENTATION_PLAN.md` §2 not all placeholder.
-- [ ] `README.md` has working **cd / install / test**.
-- [ ] `PLANNED_INTERFACE.md` §0 matches real artifacts or states none/TBD.
-- [ ] Human confirms.
+- `PLAN.md` §2 not all placeholder.
+- `README.md` has working **cd / install / test**.
+- `PLANNED_INTERFACE.md` §0 matches real artifacts or states none/TBD.
+- Human confirms.
 
-**Then:** Delete this file; `rg BOOTSTRAP.md`; drop README index row; optional note in `CHANGELOG.md` / `implementation-notes.md`.
+**Then:** Rename this file to `INIT_LOG.md`; `rg BOOTSTRAP.md` and update links; drop README index row; optional note in `CHANGELOG.md` / `implementation-notes.md`.
 
-**Next:** Interface planning → `PLANNED_INTERFACE.md` §1+ → `TODO` / `DECISIONS` / `BACKLOG`.
+**Next:** Interface planning → `PLANNED_INTERFACE.md` §1+ → `PLAN.md` / `DECISIONS.md` / `BACKLOG.md`.

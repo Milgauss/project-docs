@@ -8,24 +8,6 @@
 
 ---
 
-## Workflow
-
-| # | Who | Action |
-|---|-----|--------|
-| 1 | Human | Fill **Goal**, set **Status** → `draft`. |
-| 2 | AI | Propose **Doc / contract updates** (what changes, where) + **Checklist**; link [`TODO.md`](TODO.md) / [`DECISIONS.md`](DECISIONS.md) when possible. Set **Status** → `awaiting_human_approval`. |
-| 3 | Human | Review; edit checklist if needed; check **Human approval**; set **Status** → `approved`. |
-| 4 | AI | Execute; check off **Checklist**; follow existing doc rules (SoT, `Refs: D-…`, schema regen, tests). Set **Status** → `in_progress` then `complete`. |
-| 5 | Human | Delete `active-task.md`. |
-
----
-
-## Status
-
-`draft` · `awaiting_human_approval` · `approved` · `in_progress` · `complete`
-
----
-
 ## Goal
 
 *(Human: outcome, constraints, links to contract sections if any.)*
@@ -35,29 +17,19 @@
 ## Links (optional)
 
 - `PLANNED_INTERFACE.md` §…
-- `TODO.md` …
+- `PLAN.md` …
 - `DECISIONS.md` …
 
 ---
 
-## Doc / contract updates (AI proposes)
+## Proposed Plan (AI)
 
-*(Files/sections to change; no paste of full normative text — edit the real SoT files.)*
+*(Files/sections to change; no paste of full normative text — edit the real SoT files. Link to `PLAN.md` / `DECISIONS.md` when possible.)*
 
----
-
-## Checklist (AI proposes — human approves)
-
-- [ ] *(prefer rows that mirror or link [`TODO.md`](TODO.md); add `Refs:` there if decision-gated)*
+- [ ] *(prefer rows that mirror or link [`PLAN.md`](PLAN.md); add `Refs:` there if decision-gated)*
 
 ---
 
-## Human approval
+## Execution Log (AI)
 
-- [ ] Checklist approved *(human)*
-
----
-
-## Execution log (AI)
-
-*(Check items above as completed; optional short notes.)*
+*(Check items above as completed; optional short notes. Execute only after human says "Yes" or "Approved" in chat.)*

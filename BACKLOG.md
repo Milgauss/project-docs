@@ -7,7 +7,7 @@
 | **`Vx-…`** | Locked outcome for a **future major**; short resolution; one row = one decision. |
 | **Open** | Ideas; not normative; point at contract for current behavior. |
 
-**Execution:** [`TODO.md`](TODO.md) + [`DECISIONS.md`](DECISIONS.md) (`D-…`). **Hygiene:** [`COLLABORATION_AND_AI_RULES.md`](COLLABORATION_AND_AI_RULES.md) §7.
+**Execution:** [`PLAN.md`](PLAN.md) + [`DECISIONS.md`](DECISIONS.md) (`D-…`). **Hygiene:** [`COLLABORATION_AND_AI_RULES.md`](COLLABORATION_AND_AI_RULES.md) §7.
 
 ---
 

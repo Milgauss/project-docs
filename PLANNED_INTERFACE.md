@@ -2,7 +2,7 @@
 
 **Contract revision:** `YYYY-MM-DD` — template scaffold. **Bump** date and add a **short note** (what changed) whenever you edit **normative** content (§3–§8 behavior, models, env names). Then update dependents in the same change set where they apply: [`README.md`](README.md) commands, generated schema / OpenAPI, tests.
 
-**Template:** Replace **Your Project**; add §3–§8 when design exists. Layout: [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md).
+**Template:** Replace **Your Project**; add §3–§8 when design exists. Layout: [`PLAN.md`](PLAN.md).
 
 **Agents**
 
@@ -12,7 +12,7 @@
 - **`active-task.md`** (optional, gitignored): mission + checklist only — **not** SoT; see [`active-task.template.md`](active-task.template.md).
 - Do not use `README.md` as a second spec for behavior ([§0](PLANNED_INTERFACE.md#sources-of-truth)).
 
-**Related:** [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md) · [`DECISIONS.md`](DECISIONS.md) · [`TODO.md`](TODO.md) · [`BACKLOG.md`](BACKLOG.md)
+**Related:** [`PLAN.md`](PLAN.md) · [`DECISIONS.md`](DECISIONS.md) · [`BACKLOG.md`](BACKLOG.md)
 
 ---
 
@@ -20,15 +20,14 @@
 
 ## 0. Sources of truth
 
-Secondary docs **link** here; do not restate normative behavior in `README.md`, `IMPLEMENTATION_PLAN.md`, or `implementation-notes.md` when this file defines it.
+Secondary docs **link** here; do not restate normative behavior in `README.md`, `PLAN.md`, or `implementation-notes.md` when this file defines it.
 
 | Kind of fact | Authoritative | Where |
 |--------------|---------------|--------|
 | Behavior, public models, errors | This file | §3–§7 (when present) |
 | Env var **names** / required / purpose | This file | §8 |
 | Install, test, ops **commands** | [`README.md`](README.md) | For coding agents |
-| Stack, modules, phases | [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md) | §2–§4 |
-| Checklist | [`TODO.md`](TODO.md) | — |
+| Stack, modules, phase checklists | [`PLAN.md`](PLAN.md) | §2–§4 |
 | **`D-…`** | [`DECISIONS.md`](DECISIONS.md) | §2–§3 |
 | **`Vx-…`**, v2+ ideas | [`BACKLOG.md`](BACKLOG.md) | — |
 | Retros | [`implementation-notes.md`](implementation-notes.md) | non-normative |
