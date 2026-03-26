@@ -26,7 +26,7 @@ Taskmaster allows Cursor to track micro-steps without polluting our high-level m
 
 **Prompt 2: Transition from Bootstrap to Interface Planning**
 *(Use this only after BOOTSTRAP.md is complete and renamed to INIT_LOG.md)*
-> *"Now that bootstrap is done, let's move to Interface Planning. Please read `_human-docs/INITIAL_REQUIREMENTS.md` to understand the product requirements. Use that knowledge to flesh out `PLANNED_INTERFACE.md` starting at Section 1. Once you have written `PLANNED_INTERFACE.md`, treat it as the absolute Source of Truth going forward and do not rely on the initial requirements document anymore."*
+> *"Now that bootstrap is done, let's move to Interface Planning. Please read `_human-docs/INITIAL_REQUIREMENTS.md` and follow its references to understand the product requirements. Use that knowledge to flesh out `PLANNED_INTERFACE.md` starting at Section 1. Once you have written `PLANNED_INTERFACE.md`, treat it as the absolute Source of Truth going forward and do not rely on the initial requirements document anymore."*
 
 **Prompt 3: Transition from Interface Planning to Implementation Planning**
 *(Use this after you are satisfied with PLANNED_INTERFACE.md)*
@@ -90,8 +90,8 @@ Taskmaster allows Cursor to track micro-steps without polluting our high-level m
 > 4. Review `BACKLOG.md` and prepare the workspace to begin migrating `Vx-...` items into the active contract. Do not start implementing V2 yet; just finalize the current documentation state."*
 
 **Prompt 14: Kicking off the Next Major Version (V2+)**
-*(Use this to restart the planning loop for a new major phase. **Note:** Paste any new product requirements into this file under a 'V2 Requirements' header before running this.)*
-> *"We are kicking off V2. I have added new requirements to the bottom of `_human-docs/INITIAL_REQUIREMENTS.md`. Please read them, and review any existing `Vx-...` ideas in `BACKLOG.md`. Just like we did in Phase 1, use that knowledge to update `PLANNED_INTERFACE.md` with the new V2 architecture and scope. Do not update `PLAN.md` or write code yet. Treat this as a clean reset to the Interface Planning phase. Once we agree on the V2 Interface, we will move to Prompt 3."*
+*(Use this to restart the planning loop for a new major phase. **Note:** Paste any new product requirements into `_human-docs/V2_PRD.md` before running this.)*
+> *"We are kicking off V2. Please read `_human-docs/INITIAL_REQUIREMENTS.md` and follow its references to understand the V2 requirements. Review any existing `Vx-...` ideas in `BACKLOG.md`. Just like we did in Phase 1, use that knowledge to update `PLANNED_INTERFACE.md` with the new V2 architecture and scope. Do not update `PLAN.md` or write code yet. Treat this as a clean reset to the Interface Planning phase. Once we agree on the V2 Interface, we will move to Prompt 3."*
 
 ---
 
@@ -104,10 +104,12 @@ When an entire major version is complete, use Prompts 13 and 14 to freeze the cu
 
 ---
 
-## V1 Requirements
+## Product Requirements
 
-[... paste the original prompt/customer requirements here ...]
+Instead of pasting massive requirements here, it is recommended to keep them in dedicated files within the `_human-docs/` folder and reference them below.
 
-## V2 Requirements
+### V1 Requirements
+* **Reference:** `_human-docs/V1_PRD.md` (Create this file and paste your initial requirements there).
 
-[... paste the V2 requirements here when ready to use Prompt 14 ...]
+### V2+ Requirements
+* **Reference:** `_human-docs/V2_PRD.md` (Create this file when ready to use Prompt 14).
