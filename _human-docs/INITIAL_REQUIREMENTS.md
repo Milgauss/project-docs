@@ -3,12 +3,23 @@
 > **⚠️ NOT A SOURCE OF TRUTH — HISTORICAL CONTEXT ONLY**
 > This document contains the original requirements used to bootstrap `PLANNED_INTERFACE.md`. 
 > It is intentionally NOT updated as development progresses. 
-> **Agents:** Do NOT read this file to make implementation decisions, and do NOT update this file. If you need the current contract, read `PLANNED_INTERFACE.md`.
+> **Agents:** Do NOT read this file to make implementation decisions (unless the human explicitly asks you to read it during initial Bootstrap via Prompt 2). If you need the current contract, read `PLANNED_INTERFACE.md`.
 
 ---
 
 ### 💡 For the Human: How to use this file in a new project
 When starting a new project with this template, paste your product requirements below, and then use these prompts in your Cursor chat to kick off the project safely.
+
+**Before starting, ensure Taskmaster MCP is configured:**
+Taskmaster allows Cursor to track micro-steps without polluting our high-level markdown files. It stores its state locally in your project.
+1. **Initialize Taskmaster in your project:** Run `npx task-master-ai init` in your terminal to initialize the local `.taskmaster` folders and config files for this specific project.
+2. In Cursor Settings > Features > MCP, add a new server:
+   - **Name:** `task-master`
+   - **Type:** `command`
+   - **Command:** `npx -y task-master-ai`
+3. (Optional) If you are modifying the `.cursor/mcp.json` file directly, ensure you add your LLM API keys to the `env` object for the server if required by your specific provider.
+4. Restart Cursor completely to ensure the MCP server is loaded.
+5. In the Cursor chat, click the "Tools" or "MCP" icon to verify that the tools are available.
 
 **Prompt 1: Start the Bootstrap Process**
 > *"Hello! I have just copied a new project documentation template into this folder. This project will be a [briefly describe app, e.g., Next.js SaaS app]. Please familiarize yourself with `README.md` and then initiate the `BOOTSTRAP.md` process with me so we can set up the basic project configuration."*
@@ -23,24 +34,29 @@ When starting a new project with this template, paste your product requirements 
 
 **Prompt 4: Generating the Phase Checklists**
 *(Use this after you have approved the architecture and stack in PLAN.md)*
-> *"The architecture and stack in `PLAN.md` Sections 1-3 are approved. Please change the Design Status checkbox to `[x]` and generate the granular Phase Checklists in Section 4. Base this strictly on `PLANNED_INTERFACE.md` and our agreed architecture. Break the work down into small, iterative chunks following an 'Implement -> Test -> Implement -> Test' pattern. For any step that depends on an unresolved product or technical choice, reference a `Refs: D-...` tracker from `DECISIONS.md`."*
+> *"The architecture and stack in `PLAN.md` Sections 1-3 are approved. Please change the Design Status checkbox to `[x]` and generate the feature-level Phase Checklists in Section 4. Base this strictly on `PLANNED_INTERFACE.md` and our agreed architecture. Break the work down into feature-level Epics (e.g., 'Implement JWT Middleware' or 'Build Checkout UI') and group them using an 'Implement -> Test -> Implement -> Test' pattern for each feature. Do not make them too broad ('Build Backend'), but do NOT break them down into file-level micro-steps either—we will use Taskmaster for that later. For any step that depends on an unresolved product or technical choice, reference a `Refs: D-...` tracker from `DECISIONS.md`."*
 
 **Prompt 5: Document Polish Before Implementation**
 *(Use this after the Phase Checklists are generated but before you start coding)*
 > *"Before we begin implementing the checklists, please do a final pass over `PLANNED_INTERFACE.md`, `PLAN.md`, and `DECISIONS.md`. Make sure the language is tight, clean, and concise. Ensure that all cross-references (like `Refs: D-...`) map correctly between files. **CRITICAL:** Do NOT alter the structural headers, agent instructions, `[ ]` checklist formatting, or any of the existing agent control mechanisms in these templates. Only polish the project-specific content we just wrote for clarity and brevity."*
 
-**Prompt 6: Pre-Flight Check Before Implementation**
+**Prompt 6: Pre-Flight Check & Taskmaster Setup**
 *(Use this before asking the agent to implement specific Phase Checklist items)*
-> *"I'd like to implement items [X] and [Y] from `PLAN.md`. Before we write any code, please review these items against `PLANNED_INTERFACE.md` and `DECISIONS.md`. Are there any pending `D-...` decisions, missing technical details, or required clarifications that block this work? If so, please list them and provide your recommendations for resolving them so we can lock them in before coding."*
+> *"I'd like to implement items [X] and [Y] from `PLAN.md`. 
+> 1. Review these items against `PLANNED_INTERFACE.md` and `DECISIONS.md`. 
+> 2. Are there any pending `D-...` decisions, missing technical details, or required clarifications that block this work? If so, stop and provide your recommendations for resolving them. 
+> 3. If there are no blockers, use the Taskmaster MCP to create a structured task graph for this work. Create a parent Epic for the `PLAN.md` items, and break it down into granular micro-steps. Wait for my approval of the Taskmaster graph before writing any code."*
 
-**Prompt 7: Execute Implementation**
-*(Use this to kick off autonomous coding for specific checklist items)*
-> *"Please implement items [X] and [Y] from the `PLAN.md` phase checklist.
-> 1. **Blocker Check:** Verify there are no pending `D-...` decisions for these items. If there are, stop immediately and present your recommendations. Do not write code until resolved.
-> 2. **Execute & Test:** Implement the items autonomously. Run tests yourself and fix any errors without asking for confirmation.
-> 3. **Update Status:** Check off `[x]` the completed items in `PLAN.md`. Check off parent categories if all sub-items are complete.
-> 4. **Doc Updates:** Review and record any new technical decisions that emerged in `DECISIONS.md`. 
-> 5. **Retrospective:** If you encountered any notable friction, bugs, or architectural difficulties during implementation, log them in `implementation-notes.md`. Add any systemic lessons learned to `COLLABORATION_AND_AI_RULES.md`."*
+**Prompt 7: Execute Implementation via Taskmaster**
+*(Use this to kick off autonomous coding after Prompt 6 is approved)*
+> *"The Taskmaster graph is approved. Please begin execution.
+> 1. Query Taskmaster for the first pending sub-task.
+> 2. Implement the item autonomously. Run tests yourself and fix any errors.
+> 3. Once successful, mark that node complete in Taskmaster.
+> 4. Automatically proceed to the next pending sub-task in Taskmaster until the parent Epic is complete.
+> 5. **Sync to PLAN:** Only when the entire Taskmaster Epic is complete, check off `[x]` the corresponding high-level items in `PLAN.md`.
+> 6. **Doc Updates:** Review and record any new technical decisions that emerged in `DECISIONS.md`. 
+> 7. **Retrospective:** Log any friction, bugs, or architectural difficulties in `implementation-notes.md`. Add any systemic lessons learned to `COLLABORATION_AND_AI_RULES.md`."*
 
 **Prompt 8: Post-Implementation Retrospective**
 *(Use this immediately after the agent finishes a complex implementation step, to ensure hard-learned lessons are saved for future chat sessions)*
@@ -58,9 +74,8 @@ When starting a new project with this template, paste your product requirements 
 > 3. Add console logs or use debug tools to gather concrete evidence of the state. 
 > 4. Present your findings on the root cause and propose a targeted fix. Wait for my approval before modifying the code."*
 
-**Prompt 11: Kicking off a Complex Sub-Task**
-*(Use this when a single checklist item is too massive and needs its own granular sub-plan)*
-> *"The next checklist item, [Task Name], is highly complex. I have copied `active-task.template.md` to `active-task.md`. Please read `active-task.md` and fill out the 'Proposed Plan' section by breaking this single feature down into micro-steps based on our `PLANNED_INTERFACE.md` contract. Do not begin execution. Stop and wait for me to review and approve the sub-plan."*
+**Prompt 11: Kicking off a Complex Sub-Task (DEPRECATED)**
+*(This prompt is no longer needed. Taskmaster MCP handles complex sub-tasks dynamically during Prompt 6. Do not use `active-task.md`.)*
 
 **Prompt 12: Promoting a Backlog Item to Active Contract**
 *(Use this weeks/months later when adding a single isolated feature to an established project)*

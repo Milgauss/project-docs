@@ -1,6 +1,6 @@
 .DS_Store
-# Ephemeral mission file (copy from active-task.template.md); human deletes when task ends.
-active-task.md
+# Local state for Taskmaster MCP
+.taskmaster/
 node_modules/
 .venv/
 __pycache__/

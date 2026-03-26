@@ -7,9 +7,9 @@ alwaysApply: true
 
 0. **`BOOTSTRAP.md` present?** Complete with human: tooling + README commands + `PLANNED_INTERFACE.md` §0 only (not §1–§7). Then human renames file to `INIT_LOG.md` + fixes links. Absent → skip.
 
-0b. **`active-task.md` present?** (gitignored; copy from `active-task.template.md`.) Read **Goal** + **Proposed Plan** + **Execution Log**. **Not SoT.** If human hasn't approved yet → propose doc updates + checklist; stop for human. If human approved → execute checklist + normal rules. Trivial edits → ignore. Absent → skip.
+0b. **Taskmaster MCP:** Use Taskmaster for granular execution of complex items. **Not SoT.** Sync final states to `PLAN.md` and `DECISIONS.md`.
 
-0c. **Human said Docs only / documentation only / narrow Touches:** — narrow file reads per [`README.md` human scope + Task row](README.md#human-scope); still update SoT files when behavior changes.
+0c. **Human said Docs only / documentation only / narrow Touches:** — narrow file reads per [`README.md` human scope](README.md#human-scope) + [Task row](README.md#task-first-open); still update SoT files when behavior changes.
 
 1. **`PLAN.md`** checklists. If **`Refs: D-…`** → read **`DECISIONS.md`** §2–§3 (§2 shipped · §3 contract-locked, code may lag). **`PLANNED_INTERFACE.md`** normative. **`README.md`** = commands + links — no new behavior without contract §0 update.
 
@@ -32,7 +32,7 @@ alwaysApply: true
 | `BOOTSTRAP.md` | If present: run once; rename to `INIT_LOG.md` |
 | `README.md` | For coding agents; [task → open first](README.md#task-first-open); terminal blocks |
 | `AGENTS.md` | Optional tool entry → README |
-| `active-task.template.md` | Copy → `active-task.md` for complex tasks |
+| `active-task.template.md` | DEPRECATED: Use Taskmaster |
 | `DECISIONS.md` | §2–§3 `D-…`; §4 open |
 | `BACKLOG.md` | `Vx-…` |
 | `COLLABORATION_AND_AI_RULES.md` | Drift, ritual, §7 hygiene |

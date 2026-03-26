@@ -17,7 +17,7 @@ Contract-first markdown + Cursor rules. Replace placeholders as you adopt.
 | Step | Action |
 |------|--------|
 | **Entry** | This section + **Documentation index** below. |
-| **Active task** | If **`active-task.md`** exists (local, gitignored) → read **Goal** + **Proposed Plan** + **Execution Log**. Not SoT. If not approved → propose doc deltas + checklist; stop for human. If approved → execute checklist; human deletes file when done. Skip for trivial work. |
+| **Active task** | Use **Taskmaster MCP** for granular execution tracking of complex tasks. Do not use local markdown files for micro-steps. |
 | **Bootstrap** | If [`BOOTSTRAP.md`](BOOTSTRAP.md) exists → complete it, then rename to `INIT_LOG.md`. Else skip. |
 | **SoT** | [`PLANNED_INTERFACE.md` §0](PLANNED_INTERFACE.md#sources-of-truth) — who owns each fact type. |
 | **Read order** | `PLANNED_INTERFACE.md` → `PLAN.md` → [`DECISIONS.md`](DECISIONS.md) §2–§3 when `PLAN.md` has `Refs: D-…` → optional [`BACKLOG.md`](BACKLOG.md), [`implementation-notes.md`](implementation-notes.md). |
@@ -27,7 +27,7 @@ Contract-first markdown + Cursor rules. Replace placeholders as you adopt.
 
 ### Cold start (default path)
 
-If no local **`active-task.md`** and no pending **[`BOOTSTRAP.md`](BOOTSTRAP.md)** work, open **in order** (then add code paths the task needs):
+If no pending **[`BOOTSTRAP.md`](BOOTSTRAP.md)** work, open **in order** (then add code paths the task needs):
 
 1. [`README.md`](README.md#for-coding-agents) — this section + [Documentation index](#documentation-index)
 2. [`PLANNED_INTERFACE.md`](PLANNED_INTERFACE.md#sources-of-truth) — §0 SoT, then task §§
@@ -59,7 +59,7 @@ Agents: honor the hint. **Docs-only** still uses **`PLANNED_INTERFACE.md`** / **
 | What to build next / checkpoints | [`PLAN.md`](PLAN.md) (Checklists) → [`DECISIONS.md`](DECISIONS.md) if `Refs: D-…` |
 | Future / v2+ idea (not contract) | [`BACKLOG.md`](BACKLOG.md) |
 | Integration with parent system | [`SYSTEM_CONTEXT.md`](SYSTEM_CONTEXT.md) (optional; contract wins) |
-| Complex multi-step task (context handoff) | **`active-task.md`** if present ([`active-task.template.md`](active-task.template.md) → copy); else usual read order |
+| Complex multi-step task (context handoff) | Check **Taskmaster MCP** for current state; else usual read order |
 | **Docs only** / **documentation only** (human said so) | [Cold start](#cold-start) docs only: `README.md` → `PLANNED_INTERFACE.md` (§0 + sections being edited) → `COLLABORATION_AND_AI_RULES.md` §1 (drift/checklists) → `PLAN.md` / `DECISIONS.md` / `BACKLOG.md` as touched. **Skip** source trees unless verifying a link. |
 
 **Required when a test runner exists:** Fenced **cd**, **install**, **test** blocks here (real paths/commands). Until then, placeholder:
@@ -88,7 +88,7 @@ Agents: honor the hint. **Docs-only** still uses **`PLANNED_INTERFACE.md`** / **
 | [`schemas/public_pydantic_schemas.json`](schemas/public_pydantic_schemas.json) | Optional; Python/Pydantic path |
 | [`scripts/export_public_schema.py`](scripts/export_public_schema.py) | Pydantic export; set `PUBLIC_PACKAGE` |
 | [`AGENTS.md`](AGENTS.md) | Thin entry pointer for tools; links here |
-| [`active-task.template.md`](active-task.template.md) | Copy → **`active-task.md`** (gitignored) for complex tasks; delete `active-task.md` when done |
+| [`active-task.template.md`](active-task.template.md) | **DEPRECATED:** Use Taskmaster MCP instead. |
 
 **Human-only** ([`.cursorignore`](.cursorignore)): `_human-docs/` (e.g. `INITIAL_REQUIREMENTS.md`, `ai-prompt-examples.md`) — not SoT; omit from default doc pass.
 
@@ -114,7 +114,7 @@ Adjust patterns if your `D-…` / `Vx-…` naming differs.
 3. Interface design: human prompts content into `PLANNED_INTERFACE.md` §1+; then `PLAN.md` / `DECISIONS.md` / `BACKLOG.md` as usual.
 4. Add `pyproject.toml` and/or `package.json` (+ lockfiles), CI; keep **cd/install/test** here accurate.
 
-**Complex tasks (optional):** copy [`active-task.template.md`](active-task.template.md) to **`active-task.md`**, fill goal, run the approve → execute loop in that file; delete **`active-task.md`** when finished.
+**Complex tasks (optional):** use **Taskmaster MCP** to generate a structured task graph and execute micro-steps iteratively.
 
 ---
 

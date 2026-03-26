@@ -4,7 +4,7 @@
 
 **Default doc pass**
 
-1. If **`active-task.md`** exists (gitignored) → read **Goal** + **Proposed Plan** + **Execution Log**; **not SoT** — still update `PLANNED_INTERFACE.md` / registers per rules.
+1. **Taskmaster MCP:** Use Taskmaster to read current micro-step goals; **not SoT** — still update `PLANNED_INTERFACE.md` / registers per rules.
 2. If [`BOOTSTRAP.md`](BOOTSTRAP.md) exists → complete before product work.
 3. `PLANNED_INTERFACE.md` §0, then task sections.
 4. [`PLAN.md`](PLAN.md) → [`DECISIONS.md`](DECISIONS.md) §2–§3 for **`Refs: D-…`**.
@@ -18,9 +18,9 @@
 | `PLAN.md` | Work order; **`Refs: D-…`** |
 | `BACKLOG.md` | `Vx-…` + ideas; promote to interface before contract |
 
-**Execution:** Run install/tests when toolchain exists; iterate. Trivial scope → skip **`active-task.md`** and extra approval theater.
+**Execution:** Run install/tests when toolchain exists; iterate. Trivial scope → skip Taskmaster and extra approval theater.
 
-**`active-task.md`:** Prefer checklist items that **link or mirror** [`PLAN.md`](PLAN.md); do not duplicate long contract text inside the task file — edit SoT files directly.
+**Taskmaster MCP:** Create Epics that **link or mirror** items in [`PLAN.md`](PLAN.md); do not duplicate long contract text — edit SoT files directly.
 
 **Post-Change Ritual**
 

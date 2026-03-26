@@ -9,7 +9,7 @@
 - Read [`README.md`](README.md) **For coding agents** first.
 - **§0** = SoT table. Conflict → **this file wins**; fix code or this file on purpose.
 - If [`BOOTSTRAP.md`](BOOTSTRAP.md) exists: it may touch **§0** (artifact paths/regen) + README commands only — not §1–§7.
-- **`active-task.md`** (optional, gitignored): mission + checklist only — **not** SoT; see [`active-task.template.md`](active-task.template.md).
+- **Taskmaster MCP** (optional): use for complex tasks — **not** SoT.
 - Do not use `README.md` as a second spec for behavior ([§0](PLANNED_INTERFACE.md#sources-of-truth)).
 
 **Related:** [`PLAN.md`](PLAN.md) · [`DECISIONS.md`](DECISIONS.md) · [`BACKLOG.md`](BACKLOG.md)
@@ -33,7 +33,7 @@ Secondary docs **link** here; do not restate normative behavior in `README.md`, 
 | Retros | [`implementation-notes.md`](implementation-notes.md) | non-normative |
 | Optional generated schema / OpenAPI | Path you record | **Python+Pydantic:** `python scripts/export_public_schema.py` (`PUBLIC_PACKAGE`). **Node:** your pipeline — record **file** + **regen** here and in [`README.md`](README.md). |
 
-*`active-task.md` is intentionally **not** in this table — operational scratch only ([`active-task.template.md`](active-task.template.md)).*
+*Taskmaster is intentionally **not** in this table — operational state only.*
 
 ---
 

@@ -48,7 +48,7 @@ Run commands; fix failures; markdown links for web; repo paths in code fences; n
 | **`BOOTSTRAP.md` present** | Run end-to-end: tooling + README commands + `PLANNED_INTERFACE.md` §0 machinery only. Rename file to `INIT_LOG.md`; `rg BOOTSTRAP.md`. |
 | **After removal/rename** | README + `PLAN.md` §2 only. |
 | **Interface planning** | Human drives `PLANNED_INTERFACE.md` §1+ → then `DECISIONS.md` / `PLAN.md` / `BACKLOG.md` / tests / `.env.example`. |
-| **Active task** | Optional: [`active-task.template.md`](active-task.template.md) → **`active-task.md`** (gitignored). Human deletes **`active-task.md`** when task completes. |
+| **Active task** | Use **Taskmaster MCP** for granular execution tracking. |
 
 ## 5. Template rename pass
 

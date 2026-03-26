@@ -8,4 +8,6 @@ Thin entry point for tools that look for **`AGENTS.md`**. **Normative detail liv
 
 **Full agent workflow + task routing + doc index:** [`README.md` — For coding agents](README.md#for-coding-agents) (includes [Task → open first](README.md#task-first-open), [Cold start](README.md#cold-start), [Human: scope hint](README.md#human-scope), [`rg` registers](README.md#rg-registers)).
 
-**Complex task file (local, gitignored):** `active-task.md` — see [`active-task.template.md`](active-task.template.md).
+**Complex tasks (state tracked on disk):** Use **Taskmaster MCP** for tracking execution micro-steps.
+
+**Taskmaster MCP Setup:** If not initialized, human runs `npx task-master-ai init` in the terminal and adds `npx -y task-master-ai` as a Cursor command MCP.

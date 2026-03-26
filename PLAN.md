@@ -61,27 +61,36 @@ flowchart LR
 
 ## 4. Phase Checklists
 
-*Instructions for Agent: This section is initially shell only during the initial design phase. Once the human approves the architecture above (and the checkbox is `[x]`), you must generate the granular `[ ]` checklist items here based on the design.*
+*Instructions for Agent: This section is initially shell only during the initial design phase. Once the human approves the architecture above (and the checkbox is `[x]`), you must generate the `[ ]` feature-level Epics here based on the design.*
+
+**IMPORTANT (GRANULARITY):** 
+- **Too Broad (Avoid):** "Implement Backend", "Build Frontend", "Setup Database". 
+- **Too Granular (Avoid):** "Create auth.ts file", "Add JWT import", "Write unit test for user.ts". Use **Taskmaster MCP** to track these micro-steps dynamically.
+- **Just Right (Do this):** "Implement JWT Authentication Middleware", "Build Checkout Payment Form", "Setup Postgres User Table Schema". 
+
+Only list these feature-level Epics here. Mark an item `[x]` here when the work described by this Epic is fully complete. (If using Taskmaster MCP for the task, ensure the linked Taskmaster Epic is completed first).
 
 **Legend:** `[ ]` not started · `[x]` done · `Refs:` → `DECISIONS.md` §2–3.
 
 ### [ ] Phase 1 — Scaffold
 
 #### [ ] 1.1 Implement
-
 **Refs:** *(e.g. `D-STACK-V1` when locked)*
 
-- [ ] Layout matches §3 Architecture.
+- [ ] Repository Layout matches §3 Architecture.
 - [ ] Packaging setup (+ lockfile) per §2.
 
 #### [ ] 1.2 Test
-
 - [ ] Install from README succeeds clean.
 - [ ] Minimal test or smoke from repo root.
 
 ### [ ] Phase 2 — *(rename)*
 
-- [ ] *(After `PLANNED_INTERFACE.md` + `PLAN.md` §2 are concrete.)*
+#### [ ] 2.1 Implement *(Feature Name)*
+- [ ] *(After `PLANNED_INTERFACE.md` + `PLAN.md` §2 are concrete, list feature-level Epics here.)*
+
+#### [ ] 2.2 Test *(Feature Name)*
+- [ ] *(List testing/validation Epics here.)*
 
 ---
 

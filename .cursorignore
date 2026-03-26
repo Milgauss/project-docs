@@ -7,3 +7,4 @@ __pycache__/
 
 # Human-only reference — excluded from default @-mentions / indexing (see README).
 _human-docs/
+
