@@ -1,8 +1,6 @@
 # Tech stack
 
-Do **not** open **`FRAMEWORKS.md`** unless the task is **adding or choosing a dependency.** Otherwise rely on **`PLAN.md`** §2 + **`README.md`**.
-
-When adding a dependency: prefer ✅ in **`FRAMEWORKS.md`** by layer (HTTP, DB, tests, …); locked stack stays in **`PLAN.md`** §2. Suggest better options when justified.
+Locked stack stays in **`PLAN.md`** §2. Suggest better options when justified.
 
 # Workflow
 

@@ -1,3 +1,9 @@
-# Human-only reference — excluded from default @-mentions / indexing (see README).
-ai-prompt-examples.md
+# Defaults for templates — human should replace or remove
 
+# Generated/deps
+node_modules/
+.venv/
+__pycache__/
+
+# Human-only reference — excluded from default @-mentions / indexing (see README).
+_human-docs/

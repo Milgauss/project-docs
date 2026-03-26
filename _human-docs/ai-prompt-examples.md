@@ -81,3 +81,7 @@ Based on how we have worked together so far, do you have any ideas for how the d
 
 Let's go back to review your remaining recommendations for how the documentation could be improved to reduce documentation and implementation drift. Do not implement, recommend only.
 ```
+
+```
+Please read INITIAL_REQUIREMENTS.md and spot-check the features currently marked as complete in PLAN.md against it. Are there any initial requirements we missed or drifted away from?
+```

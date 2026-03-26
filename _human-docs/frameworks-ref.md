@@ -1,10 +1,6 @@
 # Frameworks and tools
 
-Unless the task is **choosing or adding a dependency**, do **not** open this file. Otherwise use `[PLAN.md](PLAN.md)` §2 and `[README.md](README.md)` (install/test). **Not SoT.**
-
-**When you are picking a library:** Prefer ✅ rows; choose the **section** by layer (app → HTTP → DB → ML → ops → tooling → IO). If nothing fits, ask the human.
-
-**Adding a row:** First section that matches scope; below consumers, above dependencies. ✅ rows first in each table. Columns: name, blurb, homepage, docs.
+> 🛑 **HUMAN ONLY:** This file is a personal reference document. Agents must ignore its contents and rely solely on `PLAN.md` §2 for dependency decisions.
 
 ## Frontend (JavaScript / TypeScript)
 

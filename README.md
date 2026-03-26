@@ -59,9 +59,8 @@ Agents: honor the hint. **Docs-only** still uses **`PLANNED_INTERFACE.md`** / **
 | What to build next / checkpoints | [`PLAN.md`](PLAN.md) (Checklists) → [`DECISIONS.md`](DECISIONS.md) if `Refs: D-…` |
 | Future / v2+ idea (not contract) | [`BACKLOG.md`](BACKLOG.md) |
 | Integration with parent system | [`SYSTEM_CONTEXT.md`](SYSTEM_CONTEXT.md) (optional; contract wins) |
-| Pick or add a **library** | [`PLAN.md`](PLAN.md) §2, then [`FRAMEWORKS.md`](FRAMEWORKS.md) |
 | Complex multi-step task (context handoff) | **`active-task.md`** if present ([`active-task.template.md`](active-task.template.md) → copy); else usual read order |
-| **Docs only** / **documentation only** (human said so) | [Cold start](#cold-start) docs only: `README.md` → `PLANNED_INTERFACE.md` (§0 + sections being edited) → `COLLABORATION_AND_AI_RULES.md` §1 (drift/checklists) → `PLAN.md` / `DECISIONS.md` / `BACKLOG.md` as touched. **Skip** [`FRAMEWORKS.md`](FRAMEWORKS.md); **skip** source trees unless verifying a link. |
+| **Docs only** / **documentation only** (human said so) | [Cold start](#cold-start) docs only: `README.md` → `PLANNED_INTERFACE.md` (§0 + sections being edited) → `COLLABORATION_AND_AI_RULES.md` §1 (drift/checklists) → `PLAN.md` / `DECISIONS.md` / `BACKLOG.md` as touched. **Skip** source trees unless verifying a link. |
 
 **Required when a test runner exists:** Fenced **cd**, **install**, **test** blocks here (real paths/commands). Until then, placeholder:
 
@@ -88,11 +87,10 @@ Agents: honor the hint. **Docs-only** still uses **`PLANNED_INTERFACE.md`** / **
 | [`CHANGELOG.md`](CHANGELOG.md) | Releases |
 | [`schemas/public_pydantic_schemas.json`](schemas/public_pydantic_schemas.json) | Optional; Python/Pydantic path |
 | [`scripts/export_public_schema.py`](scripts/export_public_schema.py) | Pydantic export; set `PUBLIC_PACKAGE` |
-| [`FRAMEWORKS.md`](FRAMEWORKS.md) | **Skip** unless adding/choosing a dependency; not SoT |
 | [`AGENTS.md`](AGENTS.md) | Thin entry pointer for tools; links here |
 | [`active-task.template.md`](active-task.template.md) | Copy → **`active-task.md`** (gitignored) for complex tasks; delete `active-task.md` when done |
 
-**Human-only** ([`.cursorignore`](.cursorignore)): [`ai-prompt-examples.md`](ai-prompt-examples.md) — not SoT; omit from default doc pass.
+**Human-only** ([`.cursorignore`](.cursorignore)): `_human-docs/` (e.g. `INITIAL_REQUIREMENTS.md`, `ai-prompt-examples.md`) — not SoT; omit from default doc pass.
 
 <a id="rg-registers"></a>
 
