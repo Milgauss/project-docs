@@ -21,7 +21,7 @@ Contract-first markdown + Cursor rules. Replace placeholders as you adopt.
 | **Bootstrap** | If [`BOOTSTRAP.md`](BOOTSTRAP.md) exists → complete it, then rename to `INIT_LOG.md`. Else skip. |
 | **SoT** | [`PLANNED_INTERFACE.md` §0](PLANNED_INTERFACE.md#sources-of-truth) — who owns each fact type. |
 | **Read order** | `PLANNED_INTERFACE.md` → `PLAN.md` → [`DECISIONS.md`](DECISIONS.md) §2–§3 when `PLAN.md` has `Refs: D-…` → optional [`BACKLOG.md`](BACKLOG.md), [`implementation-notes.md`](implementation-notes.md). |
-| **Public API edits** | [`COLLABORATION_AND_AI_RULES.md`](COLLABORATION_AND_AI_RULES.md) §1 checklist + post-change ritual. |
+| **Public API edits** | [`.cursor/rules/agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc) public surface checklist + post-change ritual. |
 
 <a id="cold-start"></a>
 
@@ -60,7 +60,7 @@ Agents: honor the hint. **Docs-only** still uses **`PLANNED_INTERFACE.md`** / **
 | Future / v2+ idea (not contract) | [`BACKLOG.md`](BACKLOG.md) |
 | Integration with parent system | [`SYSTEM_CONTEXT.md`](SYSTEM_CONTEXT.md) (optional; contract wins) |
 | Complex multi-step task (context handoff) | Check **Taskmaster MCP** for current state; else usual read order |
-| **Docs only** / **documentation only** (human said so) | [Cold start](#cold-start) docs only: `README.md` → `PLANNED_INTERFACE.md` (§0 + sections being edited) → `COLLABORATION_AND_AI_RULES.md` §1 (drift/checklists) → `PLAN.md` / `DECISIONS.md` / `BACKLOG.md` as touched. **Skip** source trees unless verifying a link. |
+| **Docs only** / **documentation only** (human said so) | [Cold start](#cold-start) docs only: `README.md` → `PLANNED_INTERFACE.md` (§0 + sections being edited) → [`.cursor/rules/agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc) (drift/checklists) → `PLAN.md` / `DECISIONS.md` / `BACKLOG.md` as touched. **Skip** source trees unless verifying a link. |
 
 **Required when a test runner exists:** Fenced **cd**, **install**, **test** blocks here (real paths/commands). Until then, placeholder:
 

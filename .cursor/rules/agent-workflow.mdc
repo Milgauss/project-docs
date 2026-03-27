@@ -10,6 +10,13 @@
 4. [`PLAN.md`](PLAN.md) → [`DECISIONS.md`](DECISIONS.md) §2–§3 for **`Refs: D-…`**.
 5. [`implementation-notes.md`](implementation-notes.md) only for history (non-normative).
 
+**Doc drift (same PR / change set)**
+
+1. Public behavior / models / env → `PLANNED_INTERFACE.md` first.
+2. `README.md` → only if cwd/commands/paths change; never new normative prose (per `PLANNED_INTERFACE.md` §0).
+3. `rg` old names in `*.md` and source.
+4. Generated schema/OpenAPI → regen via **documented** command (`export_public_schema.py` + `PUBLIC_PACKAGE` **or** Node pipeline); snapshot test green if present.
+
 **Registers**
 
 | File | Role |

@@ -8,20 +8,7 @@
 
 ## 1. Agent workflow
 
-See [`.cursor/rules/agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc) for the primary workflow.
-
-**Doc drift (same PR / change set)**
-
-1. Public behavior / models / env → **`PLANNED_INTERFACE.md`** first.
-2. **`README.md`** → only if cwd/commands/paths change; never new normative prose (per `PLANNED_INTERFACE.md` §0).
-3. `rg` old names in `*.md` and source.
-4. Generated schema/OpenAPI → regen via **documented** command (`export_public_schema.py` + `PUBLIC_PACKAGE` **or** Node pipeline); snapshot test green if present.
-
-**Public surface checklist**
-
-See [`.cursor/rules/agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc) for the public surface checklist.
-
-**Post-change:** Repo root; env per README (venv / lockfile install); full tests; `rg` renames; add CI when code lands.
+Default doc pass, registers, **doc drift (same PR)**, public surface checklist, and post-change ritual: [`.cursor/rules/agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc).
 
 **Code style:** Minimal diff; match file; reuse helpers.
 
@@ -31,9 +18,10 @@ See [`.cursor/rules/agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc) for t
 
 | File | Role |
 |------|------|
-| [`agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc) | Default doc pass, execution, doc drift |
+| [`agent-workflow.mdc`](.cursor/rules/agent-workflow.mdc) | Default doc pass, execution, doc drift, public surface, post-change ritual |
 | [`implementation-decisions.mdc`](.cursor/rules/implementation-decisions.mdc) | PLAN/DECISIONS; interface before code; `Vx-…` |
 | [`markdown-agent-priority.mdc`](.cursor/rules/markdown-agent-priority.mdc) | Edit `*.md`: SoT, tables, links, terminal blocks |
+| [`code-review-standards.mdc`](.cursor/rules/code-review-standards.mdc) | Code/scripts/tests: SRP, typing, async, simplify pass |
 
 New repo: copy `.cursor/rules/`; fix paths; adjust `globs` / `alwaysApply`.
 

@@ -15,9 +15,9 @@ Toolkit aligned with [claude-code-templates](https://github.com/aitmpl/claude-co
 
 This workspace is **contract-first** (`PLANNED_INTERFACE.md` > `PLAN.md` > code). When reviewing work here:
 
-1. **Read order** — Follow [`README.md`](../../README.md) ([For coding agents](../../README.md#for-coding-agents), [Cold start](../../README.md#cold-start)): `PLANNED_INTERFACE.md` (SoT) → `PLAN.md` → `DECISIONS.md` when `PLAN.md` references `D-…` → optional `BACKLOG.md`.
-2. **Behavior changes** — No new normative behavior without updating the contract and decision refs; see [`AGENTS.md`](../../AGENTS.md) and [`COLLABORATION_AND_AI_RULES.md`](../../COLLABORATION_AND_AI_RULES.md) for public API / ritual.
-3. **Docs-only tasks** — If the human scoped docs-only, narrow reads per [`README.md` human scope](../../README.md#human-scope); still update SoT when behavior documented there changes.
+1. **Read order & workflow** — [`README.md` cold start](../../../README.md#cold-start) + [`agent-workflow.mdc`](../../rules/agent-workflow.mdc): `PLANNED_INTERFACE.md` (SoT) → `PLAN.md` → `DECISIONS.md` when `Refs: D-…` → optional `BACKLOG.md`.
+2. **Behavior changes** — No new normative behavior without contract + `D-…` / `Refs:` updates; pointers: [`AGENTS.md`](../../../AGENTS.md), [`COLLABORATION_AND_AI_RULES.md`](../../../COLLABORATION_AND_AI_RULES.md).
+3. **Docs-only tasks** — Narrow reads per [`README.md` human scope](../../../README.md#human-scope); still update SoT when documented behavior there changes.
 
 Flag **contract drift** (code or docs contradicting `PLANNED_INTERFACE.md` / locked `DECISIONS.md` entries) as blocking.
 

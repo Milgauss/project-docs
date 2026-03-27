@@ -19,7 +19,7 @@ alwaysApply: true
 
 4. Typo / test-only → skip steps 0, 0b, 0c, 1, 2, 3.
 
-5. **Public surface** → **`COLLABORATION_AND_AI_RULES.md`** checklist (incl. types + **`PLANNED_INTERFACE.md`** contract revision line) + post-change ritual.
+5. **Public surface** → **`agent-workflow.mdc`** (public surface checklist + post-change ritual); contract/types in **`PLANNED_INTERFACE.md`** (incl. **Contract revision** when normative §§ change). Lessons/hygiene: **`COLLABORATION_AND_AI_RULES.md`** §6–§7.
 
 *Optional:* “Decisions to confirm” if interface silent.
 
@@ -29,6 +29,7 @@ alwaysApply: true
 |------|-----|
 | `PLANNED_INTERFACE.md` | Contract; §0 SoT; §8 env |
 | `PLAN.md` | Stack, architecture, phase checklists |
+| `.cursor/rules/agent-workflow.mdc` | Doc pass, doc drift, public surface checklist, post-change ritual |
 | `BOOTSTRAP.md` | If present: run once; rename to `INIT_LOG.md` |
 | `README.md` | For coding agents; [task → open first](README.md#task-first-open); terminal blocks |
 | `AGENTS.md` | Optional tool entry → README |
