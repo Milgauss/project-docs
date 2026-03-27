@@ -9,7 +9,7 @@ description: >-
 
 # Code reviewer
 
-Toolkit aligned with [claude-code-templates](https://github.com/aitmpl/claude-code-templates) skill `development/code-reviewer` (installed under `.claude/skills/` if you ran `npx`). This copy lives at `.cursor/skills/code-reviewer/` for Cursor agents.
+Toolkit aligned with [claude-code-templates](https://github.com/davila7/claude-code-templates) skill `development/code-reviewer` (installed under `.claude/skills/` if you ran `npx`). This copy lives at `.cursor/skills/code-reviewer/` for Cursor agents.
 
 ## Project integration (this repository)
 

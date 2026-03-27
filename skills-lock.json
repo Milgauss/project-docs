@@ -5,6 +5,11 @@
       "source": "daymade/claude-code-skills",
       "sourceType": "github",
       "computedHash": "15015dbc1b74cc98dd522ce55a385e004a62e3ff9dd884506ed036064a28a795"
+    },
+    "link-validation": {
+      "source": "terrylica/cc-skills",
+      "sourceType": "github",
+      "computedHash": "43f8af259fec306a586c2f88c3de4357108216f757e2147f0d8a603fd2a4f59a"
     }
   }
 }

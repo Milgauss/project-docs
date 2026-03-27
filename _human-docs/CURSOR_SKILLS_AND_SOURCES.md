@@ -8,11 +8,13 @@ Human-first inventory of **template-shipped skills**, **upstream sources** (for 
 |--------|------|----------------------------------|---------------------|
 | **code-reviewer** | Code review posture, optional scripts, reference scaffolds | `.cursor/skills/code-reviewer/` | **Package:** [`claude-code-templates`](https://www.npmjs.com/package/claude-code-templates) (see [Claude Code Templates](https://aitmpl.com), [docs](https://docs.aitmpl.com)). **Template id:** `development/code-reviewer`. **Refresh:** `npx claude-code-templates@latest --skill development/code-reviewer` (defaults to `.claude/skills/code-reviewer/`; merge into `.cursor/skills/code-reviewer/` for Cursor). |
 | **docs-cleaner** | Consolidate redundant docs without losing value | `.cursor/skills/docs-cleaner/` | **Repo:** [`daymade/claude-code-skills`](https://github.com/daymade/claude-code-skills) (`docs-cleaner`). **Install / refresh:** `npx skills add https://github.com/daymade/claude-code-skills --skill docs-cleaner -y` ([`skills` CLI](https://www.npmjs.com/package/skills)). Output under `.agents/skills/docs-cleaner`; this template also mirrors `.cursor/skills/docs-cleaner/` for Cursor—re-sync after upgrades. |
+| **link-validation** (Markdown links; **terrylica**) | Validate markdown links (lychee) and path policy; broken links + absolute-path lint | `.cursor/skills/link-validation/` | **Repo:** [`terrylica/cc-skills`](https://github.com/terrylica/cc-skills) — skill **`link-validation`**. **Install / refresh:** `npx skills add terrylica/cc-skills --skill link-validation -y --agent cursor` ([`skills` CLI](https://www.npmjs.com/package/skills), [skills.sh listing](https://skills.sh/terrylica/cc-skills/link-validation)). Also under `.agents/skills/link-validation/`; mirror into `.cursor/skills/link-validation/` after upgrades. **Note:** `byterrylica/markdown-link-validator` is not a public GitHub repo—the author handle is **terrylica**. **Requires:** `lychee` (e.g. `brew install lychee`), Python 3.11+ and `uv` per upstream skill. |
 
 ### Operating notes
 
 - **code-reviewer:** `SKILL.md` is the entry point. `references/` are upstream starters—replace with team standards. `scripts/` are optional Python scaffolds. Version-control `.cursor/skills/<name>/` so the team shares skills.
 - **docs-cleaner:** Workflow: discovery → value analysis (keep / condense / delete) → consolidation plan (metrics) → single source of truth + link fixes. Detail: `references/value_analysis_template.md` in the skill folder. Triggers: “clean up docs”, “merge these docs”, overlapping markdown guides. **Contract-first repos:** safe for guides and README sprawl; do **not** merge or delete normative contracts (`PLANNED_INTERFACE.md`, locked `DECISIONS.md` rows) unless the human is driving a contract change.
+- **link-validation:** Run the skill workflow (lychee + path policy) before large doc PRs; results may land in `.link-check-results.md`. Prefer relative links; fix absolute paths and broken URLs per the skill. **Optional extra:** for **local file + heading** checks only, [`webhintio/markdown-link-validator`](https://github.com/webhintio/markdown-link-validator) (`npx markdown-link-validator <path>`) complements lychee. Does not replace contract review—do not “fix” SoT links by deleting anchors.
 
 **Example agent prompts (docs-cleaner):**
 
@@ -25,6 +27,28 @@ Clean up redundant markdown in docs/api/: one source of truth; list kept vs cond
 ```
 
 Agents should follow `.cursor/skills/docs-cleaner/SKILL.md`. If you asked plan-first, confirm before deleting files.
+
+**Example agent prompts (link-validation / terrylica):**
+
+```text
+Use link-validation: run lychee on README.md + docs/, apply path policy fixes, summarize .link-check-results.md. Do not edit PLANNED_INTERFACE.md unless I asked for a contract change.
+
+# shorter
+Check all markdown links under ./docs with the link-validation skill workflow.
+```
+
+**CLI examples (lychee — what the skill is built around):**
+
+```bash
+# after: brew install lychee
+lychee --verbose "./**/*.md"
+
+# common: check from repo root with config file
+lychee --config .lycheerc.toml .
+```
+
+Agents should follow `.cursor/skills/link-validation/SKILL.md`.
+
 
 ## Related Cursor rules (not skills)
 
