@@ -1,0 +1,32 @@
+---
+description: Code quality checklist (SRP, DRY, typing, React props, async) + simplify pass; applies to code, scripts, and tests.
+alwaysApply: false
+globs:
+  - "**/*.{ts,tsx,js,jsx,mjs,cjs}"
+  - "**/*.{py,go,rs}"
+  - "**/*.sh"
+  - "**/scripts/**/*"
+  - "**/test/**/*"
+  - "**/tests/**/*"
+  - "**/__tests__/**/*"
+---
+
+# Project rules and code review standards
+
+Apply when editing files matched by this rule’s **globs** (application code, scripts, and tests). Pure documentation or contract markdown without code changes is out of scope.
+
+## Code review checklist
+
+Before providing code or completing an implementation task in scope, review work against:
+
+- **Single responsibility:** Functions and methods must not exceed **30 lines**. If longer, split into smaller, focused units.
+- **DRY:** If the same logic appears more than twice, extract a shared utility or helper.
+- **Strict typing (TypeScript):** Do not use `any`. Use explicit types, interfaces, or `unknown` with narrowing where needed.
+- **React component props:** Components with **more than three** props should take a **single** props object typed by one interface or type (group related fields logically).
+- **Robust async:** Every `await`, `fetch`, Promise chain, or other async path must handle failures (`try`/`catch`, `.catch()`, or equivalent) and avoid silent failures.
+
+For **non-TypeScript** code (e.g. Python), use the same discipline: explicit annotations or clear contracts instead of untyped escape hatches.
+
+## Post-processing
+
+After writing code, run a **simplify** pass: shorten and clarify logic while keeping readability, then present the final result.
